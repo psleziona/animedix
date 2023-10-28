@@ -1,0 +1,30 @@
+package com.psleziona.animedix.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
+
+import java.util.List;
+
+@Entity
+@Data
+@NoArgsConstructor
+public class Assortment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idAssortment;
+    @NonNull
+    private String name;
+    @NonNull
+    private Double price;
+    @NonNull
+    private Double quantity;
+    @NonNull
+    private AssortmentUnit unit;
+    @NonNull
+    private AssortmentCategory category;
+    @ManyToMany(mappedBy = "usedAssortment")
+    private List<AnimalSurgery> usedInSurgeries;
+
+}
