@@ -33,7 +33,7 @@ public class Employee {
     @NonNull
     private JobRole jobRole;
     @ManyToMany(mappedBy = "employees")
-    private List<EmployeeShift> shifts;
+    private List<Shift> shifts;
     @OneToMany(mappedBy = "idAnimalSurgery.doctor")
     private List<AnimalSurgery> surgeries;
     @OneToMany(mappedBy = "doctor")
