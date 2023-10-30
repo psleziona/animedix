@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,8 @@ public class Client {
     private String phone;
     @NonNull
     private String email;
+    @NonNull
+    private String password;
     @OneToMany(mappedBy = "owner")
     private List<Animal> animals;
 }

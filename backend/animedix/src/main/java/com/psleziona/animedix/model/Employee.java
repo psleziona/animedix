@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,8 @@ public class Employee {
     private String phone;
     @NonNull
     private String email;
+    @NonNull
+    private String password;
     @NonNull
     private String street;
     @NonNull
