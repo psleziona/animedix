@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AnimalService {
-    Optional<Animal> getAnimalInfo(Integer idAnimal);
-    List<Animal> getClientAnimals(Integer idClient);
-    Page<Animal> getAnimals(Pageable pageable);
+//    Optional<Animal> getAnimalInfo(Integer idAnimal);
+//    List<Animal> getClientAnimals(Integer idClient);
+//    Page<Animal> getAnimals(Pageable pageable);
 }

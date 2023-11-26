@@ -40,4 +40,6 @@ public class Employee {
     private List<AnimalSurgery> surgeries;
     @OneToMany(mappedBy = "doctor")
     private List<Visit> visits;
+    @NonNull
+    private Role role;
 }

@@ -13,12 +13,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class BasicAuthConfiguration {
+public class SecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user = User.withUsername("user")
-                .password("{noop}password")
+                .password("pass")
                 .roles("USER")
                 .build();
         return new InMemoryUserDetailsManager(user);
@@ -27,7 +27,9 @@ public class BasicAuthConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(Customizer.withDefaults())
-                .authorizeHttpRequests(authorize -> authorize.requestMatchers(HttpMethod.OPTIONS, "/**"))
+                .authorizeHttpRequests(authorize -> authorize
+                        .anyRequest().authenticated()
+                )
                 .build();
         return http.build();
     }

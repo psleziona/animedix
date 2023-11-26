@@ -26,4 +26,6 @@ public class Client {
     private String password;
     @OneToMany(mappedBy = "owner")
     private List<Animal> animals;
+    @NonNull
+    private Role role;
 }
