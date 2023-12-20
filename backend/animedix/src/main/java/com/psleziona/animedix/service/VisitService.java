@@ -10,12 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VisitService {
-//    Optional<Visit> getVisit(Integer idVisit);
-//    List<Visit> getVisitsForDay(LocalDate date);
-//    Page<Visit> getVisitsFromPeriod(LocalDate start, LocalDate finish, Pageable pageable);
-//    Page<Visit> getVisitsByDoctor(Integer idEmployee, Pageable pageable);
-//    List<Visit> getVisitsByAnimal(Integer idAnimal);
-//    Visit setVisit(Visit visit, Integer idAnimal);
-//    void rateVisit(Integer idVisit, Integer rate);
-
+    Optional<Visit> getVisit(Integer idVisit);
+    List<Visit> getVisitsForDay(LocalDate date);
+    Page<Visit> getVisitsFromPeriod(LocalDate start, LocalDate finish, Pageable pageable);
+    Page<Visit> getVisitsByDoctor(Integer idEmployee, Pageable pageable);
+    List<Visit> getVisitsByAnimal(Integer idAnimal);
+    Visit setVisit(Visit visit, Integer idAnimal);
+    void rateVisit(Integer idVisit, Integer rate);
 }

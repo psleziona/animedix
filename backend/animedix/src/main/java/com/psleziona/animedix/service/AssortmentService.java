@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AssortmentService {
-//    Optional<Assortment> getAssortment(Integer idAssortment);
-//    List<Assortment> getAssortmentsToOrder();
-
+    Optional<Assortment> getAssortment(Integer idAssortment);
+    List<Assortment> getAssortmentsToOrder();
+    Assortment setAssortment(Assortment assortment);
+    void deleteAssortment(Integer idAssortment);
 }

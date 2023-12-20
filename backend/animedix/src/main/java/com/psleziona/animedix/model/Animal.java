@@ -1,6 +1,7 @@
 package com.psleziona.animedix.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +30,5 @@ public class Animal {
     private List<Visit> visits;
     @OneToMany(mappedBy = "idAnimalSurgery.animal")
     private List<AnimalSurgery> surgeries;
+
 }

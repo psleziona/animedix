@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 public class AnimalSurgery {
     @EmbeddedId
     private IdAnimalSurgery idAnimalSurgery;
@@ -20,7 +20,7 @@ public class AnimalSurgery {
     @JoinTable(
             name = "surgery_assortment",
             joinColumns = {@JoinColumn(name = "id_animal"),@JoinColumn(name = "id_surgery"), @JoinColumn(name = "id_employee")},
-            inverseJoinColumns = {@JoinColumn(name = "id_assortment")}
+            inverseJoinColumns = {@JoinColumn(name = "id_surgery_assortment_used")}
     )
     private List<Assortment> usedAssortment;
 }
