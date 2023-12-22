@@ -20,13 +20,8 @@ public class AnimalServiceImpl implements AnimalService {
     private final ClientRepository clientRepository;
 
     @Override
-    public Optional<Animal> getAnimalInfo(Integer idAnimal) {
+    public Optional<Animal> getAnimal(Integer idAnimal) {
         return animalRepository.findById(idAnimal);
-    }
-
-    @Override
-    public List<Animal> getClientAnimals(Integer idClient) {
-       return clientRepository.findById(idClient).map(Client::getAnimals).orElse(new ArrayList<>());
     }
 
     @Override

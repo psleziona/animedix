@@ -16,21 +16,21 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Optional<Employee> getEmployee(Integer idEmployee) {
-        return Optional.empty();
+        return employeeRepository.findById(idEmployee);
     }
 
     @Override
     public Page<Employee> getEmployees(Pageable pageable) {
-        return null;
+        return employeeRepository.findAll(pageable);
     }
 
     @Override
     public Employee setEmployee(Employee employee) {
-        return null;
+        return employeeRepository.save(employee);
     }
 
     @Override
     public void deleteEmployee(Integer idEmployee) {
-
+        employeeRepository.deleteById(idEmployee);
     }
 }

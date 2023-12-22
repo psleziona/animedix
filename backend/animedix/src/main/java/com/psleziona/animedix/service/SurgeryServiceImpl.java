@@ -14,16 +14,16 @@ public class SurgeryServiceImpl implements SurgeryService{
 
     @Override
     public List<Surgery> getSurgeries() {
-        return null;
+        return surgeryRepository.findAll();
     }
 
     @Override
     public Surgery setSurgery(Surgery surgery) {
-        return null;
+        return surgeryRepository.save(surgery);
     }
 
     @Override
     public void deleteSurgery(Integer idSurgery) {
-
+        surgeryRepository.deleteById(idSurgery);
     }
 }

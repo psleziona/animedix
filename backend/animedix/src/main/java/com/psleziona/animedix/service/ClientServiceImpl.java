@@ -1,5 +1,6 @@
 package com.psleziona.animedix.service;
 
+import com.psleziona.animedix.model.Animal;
 import com.psleziona.animedix.model.Client;
 import com.psleziona.animedix.repository.ClientRepository;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,21 +18,27 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Optional<Client> getClient(Integer idClient) {
-        return Optional.empty();
+        return clientRepository.findById(idClient);
     }
 
     @Override
     public Page<Client> getClients(Pageable pageable) {
-        return null;
+        return clientRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Animal> getClientAnimals(Integer idClient) {
+        Client client = clientRepository.findById(idClient).get();
+        return client.getAnimals();
     }
 
     @Override
     public Client setClient(Client client) {
-        return null;
+        return clientRepository.save(client);
     }
 
     @Override
     public void deleteClient(Integer idClient) {
-
+        clientRepository.deleteById(idClient);
     }
 }

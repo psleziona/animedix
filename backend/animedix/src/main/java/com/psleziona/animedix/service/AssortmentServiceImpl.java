@@ -15,7 +15,12 @@ public class AssortmentServiceImpl implements AssortmentService{
 
     @Override
     public Optional<Assortment> getAssortment(Integer idAssortment) {
-        return Optional.empty();
+        return assortmentRepository.findById(idAssortment);
+    }
+
+    @Override
+    public List<Assortment> getAssortments() {
+        return assortmentRepository.findAll();
     }
 
     @Override
@@ -25,11 +30,11 @@ public class AssortmentServiceImpl implements AssortmentService{
 
     @Override
     public Assortment setAssortment(Assortment assortment) {
-        return null;
+        return assortmentRepository.save(assortment);
     }
 
     @Override
     public void deleteAssortment(Integer idAssortment) {
-
+        assortmentRepository.deleteById(idAssortment);
     }
 }

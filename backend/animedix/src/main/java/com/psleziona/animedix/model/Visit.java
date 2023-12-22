@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 public class Visit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
