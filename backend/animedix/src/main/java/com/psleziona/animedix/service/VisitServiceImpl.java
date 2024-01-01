@@ -45,8 +45,7 @@ public class VisitServiceImpl implements VisitService {
     }
 
     @Override
-    public Visit setVisit(Visit visit, Integer idAnimal) {
-       visit.setAnimal(animalRepository.findById(idAnimal).get());
+    public Visit setVisit(Visit visit) {
        return visitRepository.save(visit);
     }
 
@@ -55,5 +54,10 @@ public class VisitServiceImpl implements VisitService {
         Visit visit = visitRepository.findById(idVisit).get();
         visit.setDoctorRate(rate);
         visitRepository.save(visit);
+    }
+
+    @Override
+    public void deleteVisit(Integer idVisit) {
+        visitRepository.deleteById(idVisit);
     }
 }

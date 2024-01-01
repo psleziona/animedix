@@ -15,6 +15,7 @@ public interface VisitService {
     Page<Visit> getVisitsFromPeriod(LocalDate start, LocalDate finish, Pageable pageable);
     Page<Visit> getVisitsByDoctor(Integer idEmployee, Pageable pageable);
     List<Visit> getVisitsByAnimal(Integer idAnimal);
-    Visit setVisit(Visit visit, Integer idAnimal);
+    Visit setVisit(Visit visit);
     void rateVisit(Integer idVisit, Integer rate);
+    void deleteVisit(Integer idVisit);
 }

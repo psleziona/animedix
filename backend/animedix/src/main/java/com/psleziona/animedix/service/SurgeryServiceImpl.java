@@ -6,11 +6,17 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class SurgeryServiceImpl implements SurgeryService{
     private final SurgeryRepository surgeryRepository;
+
+    @Override
+    public Optional<Surgery> getSurgery(Integer idSurgery) {
+        return surgeryRepository.findById(idSurgery);
+    }
 
     @Override
     public List<Surgery> getSurgeries() {
