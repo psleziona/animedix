@@ -22,6 +22,11 @@ public class ClientServiceImpl implements ClientService{
     }
 
     @Override
+    public Optional<Client> getClientByEmail(String email) {
+        return clientRepository.findClientByEmail(email);
+    }
+
+    @Override
     public Page<Client> getClients(Pageable pageable) {
         return clientRepository.findAll(pageable);
     }

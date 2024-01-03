@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface EmployeeService {
     Optional<Employee> getEmployee(Integer idEmployee);
+    Optional<Employee> getEmployeeByEmail(String email);
     Page<Employee> getEmployees(Pageable pageable);
     Employee setEmployee(Employee employee);
     void deleteEmployee(Integer idEmployee);

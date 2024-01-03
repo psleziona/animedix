@@ -35,16 +35,8 @@ public class ClientController {
         return clientService.getClientAnimals(idClient);
     }
 
-    @PostMapping("/clients")
-    ResponseEntity<Void> setClient(@RequestBody Client client) {
-        Client createdClient = clientService.setClient(client);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{idClient}").buildAndExpand(createdClient.getIdClient()).toUri();
-        return ResponseEntity.created(location).build();
-    }
-
     @PutMapping("/clients/{idClient}")
-    ResponseEntity<Void> updateClient(@PathVariable Integer idClient, @RequestBody Client client) {
+    ResponseEntity<Void> editClient(@PathVariable Integer idClient, @RequestBody Client client) {
         return clientService.getClient(idClient)
                 .map(c -> {
                     clientService.setClient(client);

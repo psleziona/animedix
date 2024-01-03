@@ -20,6 +20,11 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
+    public Optional<Employee> getEmployeeByEmail(String email) {
+        return employeeRepository.findEmployeeByEmail(email);
+    }
+
+    @Override
     public Page<Employee> getEmployees(Pageable pageable) {
         return employeeRepository.findAll(pageable);
     }

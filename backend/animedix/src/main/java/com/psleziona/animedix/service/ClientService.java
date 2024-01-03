@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public interface ClientService {
     Optional<Client> getClient(Integer idClient);
+    Optional<Client> getClientByEmail(String email);
     Page<Client> getClients(Pageable pageable);
     List<Animal> getClientAnimals(Integer idClient);
     Client setClient(Client client);

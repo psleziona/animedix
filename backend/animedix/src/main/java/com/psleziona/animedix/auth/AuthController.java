@@ -18,13 +18,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody Client client) {
         validationService.validate(client);
-        return ResponseEntity.ok(authService.register(user));
-    }
-
-    @PostMapping("/addEmployee")
-    public ResponseEntity<AuthResponse> register(@RequestBody Employee employee) {
-        validationService.validate(user);
-        return ResponseEntity.ok(authService.register(user));
+        return ResponseEntity.ok(authService.register(client));
     }
 
     @PostMapping("/login")
