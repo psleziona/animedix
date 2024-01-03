@@ -62,12 +62,13 @@ public class JwtService {
         return tokenExpiration.before(Date.from(Instant.now()));
     }
 
-    public  String generateToken(Map<String, Object> extractClaims, UserDetails userDetails) {
+    public  String generateToken(Map<String, Object> extractClaims, UserDetails userDetails, String role) {
         final Instant now = Instant.now();
         final Instant expiration = now.plus(tokenValidityInMin, ChronoUnit.MINUTES);
         return Jwts
                 .builder()
                 .setClaims(extractClaims)
+                .claim("role", role)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(expiration))
@@ -75,7 +76,7 @@ public class JwtService {
                 .compact();
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(Map.of(), userDetails);
+    public String generateToken(UserDetails userDetails, String role) {
+        return generateToken(Map.of(), userDetails, role);
     }
 }

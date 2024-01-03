@@ -30,7 +30,7 @@ public class AuthService {
         client.setRole(Role.CLIENT);
         Client createdClient = clientService.setClient(client);
         CustomUserDetails userDetails = new CustomUserDetails(createdClient.getEmail(), createdClient.getPassword(), Role.CLIENT);
-        String token = jwtService.generateToken(userDetails);
+        String token = jwtService.generateToken(userDetails, client.getRole().toString());
         return AuthResponse.builder().token(token).build();
     }
 
@@ -50,7 +50,7 @@ public class AuthService {
         if(c == null && e == null)
             throw new UsernameNotFoundException("User not found with username: " + email);
 
-        var token = jwtService.generateToken(user);
+        var token = jwtService.generateToken(user, user.getRole());
         return AuthResponse.builder()
                 .token(token)
                 .build();
