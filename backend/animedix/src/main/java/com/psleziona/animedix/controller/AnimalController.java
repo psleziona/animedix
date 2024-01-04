@@ -16,6 +16,7 @@ import java.net.URI;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class AnimalController {
     private final AnimalService animalService;
 

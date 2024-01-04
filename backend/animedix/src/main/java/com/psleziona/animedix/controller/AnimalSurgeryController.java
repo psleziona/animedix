@@ -21,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class AnimalSurgeryController {
     private final AnimalSurgeryService animalSurgeryService;
 

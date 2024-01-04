@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class ShiftController {
     private final ShiftService shiftService;
     @GetMapping("/shifts/{idShift}")
