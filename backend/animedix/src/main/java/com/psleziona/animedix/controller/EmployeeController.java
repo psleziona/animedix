@@ -1,6 +1,7 @@
 package com.psleziona.animedix.controller;
 
 import com.psleziona.animedix.model.Employee;
+import com.psleziona.animedix.model.Role;
 import com.psleziona.animedix.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -33,7 +34,7 @@ public class EmployeeController {
     ResponseEntity<Void> setEmployee(@RequestBody Employee employee) {
         Employee createdEmployee = employeeService.setEmployee(employee);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{idEmployee}").buildAndExpand(createdEmployee.getIdEmployee()).toUri();
+                .path("/{idEmployee}").buildAndExpand(createdEmployee.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
 

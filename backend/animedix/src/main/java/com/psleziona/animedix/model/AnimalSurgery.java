@@ -19,7 +19,7 @@ public class AnimalSurgery {
     @ManyToMany
     @JoinTable(
             name = "surgery_assortment",
-            joinColumns = {@JoinColumn(name = "id_animal"),@JoinColumn(name = "id_surgery"), @JoinColumn(name = "id_employee")},
+            joinColumns = {@JoinColumn(name = "id_animal"),@JoinColumn(name = "id_surgery"), @JoinColumn(name = "id")},
             inverseJoinColumns = {@JoinColumn(name = "id_surgery_assortment_used")}
     )
     private List<Assortment> usedAssortment;

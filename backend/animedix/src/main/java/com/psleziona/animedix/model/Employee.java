@@ -10,20 +10,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor(force = true)
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEmployee;
-    @NonNull
-    private String forename;
-    @NonNull
-    private String surname;
-    @NonNull
-    private String phone;
-    @NonNull
-    private String email;
-    @NonNull
-    private String password;
+public class Employee extends User {
     @NonNull
     private String street;
     @NonNull
@@ -40,6 +27,4 @@ public class Employee {
     private List<AnimalSurgery> surgeries;
     @OneToMany(mappedBy = "doctor")
     private List<Visit> visits;
-    @NonNull
-    private Role role;
 }

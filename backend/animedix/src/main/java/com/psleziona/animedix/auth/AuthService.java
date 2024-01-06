@@ -4,6 +4,8 @@ import com.psleziona.animedix.config.JwtService;
 import com.psleziona.animedix.model.Client;
 import com.psleziona.animedix.model.Employee;
 import com.psleziona.animedix.model.Role;
+import com.psleziona.animedix.model.User;
+import com.psleziona.animedix.repository.UserRepository;
 import com.psleziona.animedix.service.ClientService;
 import com.psleziona.animedix.service.EmployeeService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,6 +26,7 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final HttpServletRequest httpServletRequest;
+    private final UserRepository userRepository;
 
     public AuthResponse register(Client client) {
         client.setPassword(passwordEncoder.encode(client.getPassword()));
@@ -38,16 +41,11 @@ public class AuthService {
         authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(email, password));
 
-        Client c = clientService.getClientByEmail(email).orElseGet(() -> null);
-        Employee e = employeeService.getEmployeeByEmail(email).orElseGet(() -> null);
+        User u = userRepository.findByEmail(email).orElseGet(() -> null);
         CustomUserDetails user = null;
-        if(c != null)
-            user = new CustomUserDetails(email, c.getPassword(), c.getRole());
-
-        if(e != null)
-            user = new CustomUserDetails(email, e.getPassword(), e.getRole());
-
-        if(c == null && e == null)
+        if(u != null)
+            user = new CustomUserDetails(u.getEmail(), u.getPassword(), u.getRole());
+        else
             throw new UsernameNotFoundException("User not found with username: " + email);
 
         var token = jwtService.generateToken(user, user.getRole());
@@ -60,20 +58,12 @@ public class AuthService {
         return authenticate(authRequest.getEmail(), authRequest.getPassword());
     }
 
-    public Client getSessionClient() {
+    public User getSessionUser() {
         String token = getSessionToken();
         String prefix = "Bearer";
         token = token.substring(prefix.length());
         String email = jwtService.extractUserName(token);
-        return clientService.getClientByEmail(email).get();
-    }
-
-    public Employee getSessionEmployee() {
-        String token = getSessionToken();
-        String prefix = "Bearer";
-        token = token.substring(prefix.length());
-        String email = jwtService.extractUserName(token);
-        return employeeService.getEmployeeByEmail(email).get();
+        return userRepository.findByEmail(email).get();
     }
 
     private String getSessionToken() {

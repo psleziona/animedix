@@ -36,7 +36,7 @@ public class VisitServiceImpl implements VisitService {
 
     @Override
     public Page<Visit> getVisitsByDoctor(Integer idEmployee, Pageable pageable) {
-        return visitRepository.findVisitsByDoctor_IdEmployee(idEmployee, pageable);
+        return visitRepository.findVisitsByDoctor_Id(idEmployee, pageable);
     }
 
     @Override

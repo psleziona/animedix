@@ -23,7 +23,7 @@ public class Shift {
     @JoinTable(
             name = "employee_shift",
             joinColumns = {@JoinColumn(name = "id_shift")},
-            inverseJoinColumns = {@JoinColumn(name = "id_employee")}
+            inverseJoinColumns = {@JoinColumn(name = "id")}
     )
     private List<Employee> employees;
 }

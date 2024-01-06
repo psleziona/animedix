@@ -13,6 +13,6 @@ import java.util.List;
 public interface AnimalSurgeryRepository extends JpaRepository<AnimalSurgery, Integer> {
     List<AnimalSurgery> getAnimalSurgeriesByDate(LocalDateTime date);
     Page<AnimalSurgery> getAnimalSurgeriesByDateBetween(LocalDateTime start, LocalDateTime finish, Pageable pageable);
-    Page<AnimalSurgery> getAnimalSurgeriesByIdAnimalSurgery_Doctor_IdEmployee(Integer idDoctor, Pageable pageable);
+    Page<AnimalSurgery> getAnimalSurgeriesByIdAnimalSurgery_Doctor_Id(Integer idDoctor, Pageable pageable);
     List<AnimalSurgery> getAnimalSurgeriesByIdAnimalSurgery_Animal_IdAnimal(Integer idAnimal);
 }

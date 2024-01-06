@@ -12,6 +12,6 @@ import java.util.List;
 public interface VisitRepository extends JpaRepository<Visit, Integer> {
     List<Visit> findVisitsByDateContains(LocalDate date);
     Page<Visit> findVisitsByDateBetween(LocalDate d, LocalDate d2, Pageable pageable);
-    Page<Visit> findVisitsByDoctor_IdEmployee(Integer idEmployee, Pageable pageable);
+    Page<Visit> findVisitsByDoctor_Id(Integer idEmployee, Pageable pageable);
     List<Visit> findVisitsByAnimal_IdAnimal(Integer idAnimal);
 }

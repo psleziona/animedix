@@ -24,7 +24,7 @@ public class Animal {
     @NonNull
     private LocalDateTime dateOfBirth;
     @ManyToOne
-    @JoinColumn(name = "id_client")
+    @JoinColumn(name = "id")
     private Client owner;
     @OneToMany(mappedBy = "animal")
     private List<Visit> visits;

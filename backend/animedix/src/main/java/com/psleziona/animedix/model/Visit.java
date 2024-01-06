@@ -24,7 +24,7 @@ public class Visit {
     @JoinColumn(name = "id_animal")
     private Animal animal;
     @ManyToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "id")
     private Employee doctor;
 
 }

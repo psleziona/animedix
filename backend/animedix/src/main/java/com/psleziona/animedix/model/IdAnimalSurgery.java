@@ -16,6 +16,6 @@ public class IdAnimalSurgery implements Serializable {
     private Surgery surgery;
 
     @ManyToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "id")
     private Employee doctor;
 }
