@@ -7,10 +7,11 @@ import {
 } from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import {AuthService} from "../_service/auth.service";
+import {StorageService} from "../_service/storage.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private storageService: StorageService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
@@ -22,8 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(cloned).pipe(
         catchError((error: HttpErrorResponse) => {
           if (error && error.status === 403) {
-            localStorage.clear();
-            this.authService.isLoggedInSubject.next(false);
+            this.storageService.clean();
           }
           return throwError(() => new Error(error.message || 'An unknown error occurred'));
         })

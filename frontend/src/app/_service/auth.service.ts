@@ -9,24 +9,13 @@ import {Client} from "../_model/client";
 })
 export class AuthService {
   private authUrl = 'http://localhost:8080/auth';
-  public isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  public isLogged$ = this.isLoggedInSubject.asObservable();
-  constructor(private http: HttpClient, private router: Router) {
-    this.isLoggedInSubject.next(localStorage.getItem('token') != null);
-  }
+  constructor(private http: HttpClient) { }
 
   login(body: Object) {
-    this.http.post<any>(this.authUrl + "/login", body).subscribe(
-      response => {
-        localStorage.setItem('token', response['token']);
-        this.isLoggedInSubject.next(true);
-        this.router.navigateByUrl('/');
-      }
-    );
+    return this.http.post<any>(this.authUrl + "/login", body);
   }
 
   register(client: Client) {
-    this.http.post<Client>(this.authUrl + "/register", client).subscribe()
+    return this.http.post<Client>(this.authUrl + "/register", client);
   }
-
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../_service/auth.service";
+import {StorageService} from "../_service/storage.service";
 
 @Component({
   selector: 'app-menu',
@@ -10,19 +11,13 @@ export class MenuComponent {
   isAuth = false;
   userRole = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private storageService: StorageService) {}
 
   ngOnInit() {
-    this.authService.isLogged$.subscribe(isAuth => this.isAuth = isAuth);
+    this.isAuth = this.storageService.isLoggedIn();
     if(this.isAuth) {
-      const token = localStorage.getItem('token');
-
-      // @ts-ignore
-      const tokenParts = token.split('.');
-      const encodedPayload = tokenParts[1];
-
-      const decodedPayload = JSON.parse(atob(encodedPayload));
-      console.log(decodedPayload);
+      const user = this.storageService.getUser();
+      this.userRole = user['role'];
     }
   }
 }

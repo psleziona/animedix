@@ -1,3 +1,8 @@
 <div>
-  <p style="margin: 0">menu</p>
+  {{ this.userRole }}
+  <ul>
+    <li *ngIf="!isAuth"><a routerLink="/login">Zaloguj</a></li>
+    <li *ngIf="isAuth && userRole=='CLIENT'"><a routerLink="/animals">Zwierzęta</a></li>
+    <li *ngIf="isAuth"><a routerLink="/visits">Wizyty</a></li>
+  </ul>
 </div>
