@@ -13,6 +13,7 @@ import {AuthGuard} from "./_guard/auth.guard";
 import { AnimalsComponent } from './animals/animals.component';
 import { VisitsComponent } from './visits/visits.component';
 import { HomeComponent } from './home/home.component';
+import { AnimalComponent } from './animal/animal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     MenuComponent,
     AnimalsComponent,
     VisitsComponent,
-    HomeComponent
+    HomeComponent,
+    AnimalComponent
   ],
   imports: [
     BrowserModule,

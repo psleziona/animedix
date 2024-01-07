@@ -32,7 +32,10 @@ export class StorageService {
       const u = JSON.parse(user);
       return u['token'];
     }
+  }
 
+  public getRole() {
+    return this.getUser()['role'];
   }
 
   public isLoggedIn(): boolean {

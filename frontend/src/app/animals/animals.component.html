@@ -1,1 +1,5 @@
-<p>animals works!</p>
+<div *ngIf="role == 'CLIENT'">
+  <div *ngFor="let animal of animals">
+    <a routerLink="/animal/{{animal.idAnimal}}">{{ animal.name }}</a>
+  </div>
+</div>
