@@ -19,7 +19,11 @@ public class AnimalSurgery {
     @ManyToMany
     @JoinTable(
             name = "surgery_assortment",
-            joinColumns = {@JoinColumn(name = "id_animal"),@JoinColumn(name = "id_surgery"), @JoinColumn(name = "id")},
+            joinColumns = {
+                    @JoinColumn(name = "id_animal", referencedColumnName = "id_animal"),
+                    @JoinColumn(name = "id_surgery", referencedColumnName = "id_surgery"),
+                    @JoinColumn(name = "id", referencedColumnName = "id")
+            },
             inverseJoinColumns = {@JoinColumn(name = "id_surgery_assortment_used")}
     )
     private List<Assortment> usedAssortment;

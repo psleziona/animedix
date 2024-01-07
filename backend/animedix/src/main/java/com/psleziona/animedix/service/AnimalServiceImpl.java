@@ -1,7 +1,10 @@
 package com.psleziona.animedix.service;
 
+import com.psleziona.animedix.auth.AuthService;
 import com.psleziona.animedix.model.Animal;
 import com.psleziona.animedix.model.Client;
+import com.psleziona.animedix.model.Role;
+import com.psleziona.animedix.model.User;
 import com.psleziona.animedix.repository.AnimalRepository;
 import com.psleziona.animedix.repository.ClientRepository;
 import lombok.AllArgsConstructor;
@@ -18,6 +21,7 @@ import java.util.Optional;
 public class AnimalServiceImpl implements AnimalService {
     private final AnimalRepository animalRepository;
     private final ClientRepository clientRepository;
+    private final AuthService authService;
 
     @Override
     public Optional<Animal> getAnimal(Integer idAnimal) {
@@ -26,6 +30,10 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Page<Animal> getAnimals(Pageable pageable) {
+        User currentUser = authService.getSessionUser();
+        if(currentUser.getRole() == Role.CLIENT) {
+            return animalRepository.getAnimalsByOwnerId(currentUser.getId(), pageable);
+        }
         return animalRepository.findAll(pageable);
     }
 

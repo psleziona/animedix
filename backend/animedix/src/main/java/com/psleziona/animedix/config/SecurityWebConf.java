@@ -33,7 +33,7 @@ public class SecurityWebConf {
                 })
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .cors(AbstractHttpConfigurer::disable);
+                .cors();
         return http.build();
     }
 }

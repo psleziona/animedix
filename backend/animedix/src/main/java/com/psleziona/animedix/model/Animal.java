@@ -1,5 +1,7 @@
 package com.psleziona.animedix.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,10 +27,13 @@ public class Animal {
     private LocalDateTime dateOfBirth;
     @ManyToOne
     @JoinColumn(name = "id")
+    @JsonIgnoreProperties("animals")
     private Client owner;
     @OneToMany(mappedBy = "animal")
+    @JsonIgnore
     private List<Visit> visits;
     @OneToMany(mappedBy = "idAnimalSurgery.animal")
+    @JsonIgnore
     private List<AnimalSurgery> surgeries;
 
 }
