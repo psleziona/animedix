@@ -20,12 +20,15 @@ import java.util.Optional;
 @AllArgsConstructor
 public class AnimalServiceImpl implements AnimalService {
     private final AnimalRepository animalRepository;
-    private final ClientRepository clientRepository;
     private final AuthService authService;
 
     @Override
     public Optional<Animal> getAnimal(Integer idAnimal) {
-        return animalRepository.findById(idAnimal);
+        User currentUser = authService.getSessionUser();
+        Animal animal = animalRepository.findById(idAnimal).orElseThrow();
+        if(currentUser.getRole() == Role.DOCTOR || (currentUser.getRole() == Role.CLIENT && ((Client)currentUser).getAnimals().contains(animal)))
+            return animalRepository.findById(idAnimal);
+        return Optional.of(null);
     }
 
     @Override
