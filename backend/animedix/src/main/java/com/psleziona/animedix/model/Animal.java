@@ -30,10 +30,10 @@ public class Animal {
     @JsonIgnoreProperties("animals")
     private Client owner;
     @OneToMany(mappedBy = "animal")
-    @JsonIgnore
+    @JsonIgnoreProperties({"animal", "doctor"})
     private List<Visit> visits;
     @OneToMany(mappedBy = "idAnimalSurgery.animal")
-    @JsonIgnore
+    @JsonIgnoreProperties("usedAssortment")
     private List<AnimalSurgery> surgeries;
 
 }

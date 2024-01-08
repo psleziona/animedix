@@ -1,5 +1,6 @@
 package com.psleziona.animedix.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Assortment {
     @NonNull
     private AssortmentCategory category;
     @ManyToMany(mappedBy = "usedAssortment")
+    @JsonIgnore
     private List<AnimalSurgery> usedInSurgeries;
 
 }

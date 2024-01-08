@@ -42,6 +42,8 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Animal setAnimal(Animal animal) {
+        Client user = (Client) authService.getSessionUser();
+        animal.setOwner(user);
         return animalRepository.save(animal);
     }
 
