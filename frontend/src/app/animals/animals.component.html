@@ -10,7 +10,13 @@
       <mat-datepicker #myDatePicker></mat-datepicker>
     </mat-form-field>
 
-    <button type="submit">Zaloguj</button>
+    <label for="species">Gatunek</label>
+    <input type="text" id="species" formControlName="species">
+
+    <label for="breed">Rasa</label>
+    <input type="text" id="breed" formControlName="breed">
+
+    <button type="submit">Dodaj zwierzę</button>
   </form>
   <div *ngFor="let animal of animals">
     <a routerLink="/animal/{{animal.idAnimal}}">{{ animal.name }}</a>
