@@ -23,7 +23,7 @@ public class Employee extends User {
     private JobRole jobRole;
     @ManyToMany(mappedBy = "employees")
     private List<Shift> shifts;
-    @OneToMany(mappedBy = "idAnimalSurgery.doctor")
+    @OneToMany(mappedBy = "doctor")
     private List<AnimalSurgery> surgeries;
     @OneToMany(mappedBy = "doctor")
     private List<Visit> visits;

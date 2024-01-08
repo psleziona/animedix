@@ -1,5 +1,6 @@
 package com.psleziona.animedix.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +23,11 @@ public class Visit {
     private Integer doctorRate;
     @ManyToOne
     @JoinColumn(name = "id_animal")
+    @JsonIgnoreProperties({"owner","visits"})
     private Animal animal;
     @ManyToOne
     @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"shifts", "surgeries", "visits"})
     private Employee doctor;
 
 }

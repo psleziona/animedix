@@ -37,12 +37,12 @@ public class AnimalSurgeryServiceImpl implements AnimalSurgeryService{
 
     @Override
     public Page<AnimalSurgery> getSurgeriesByDoctor(Integer idEmployee, Pageable pageable) {
-        return animalSurgeryRepository.getAnimalSurgeriesByIdAnimalSurgery_Doctor_Id(idEmployee, pageable);
+        return animalSurgeryRepository.getAnimalSurgeriesByDoctorId(idEmployee, pageable);
     }
 
     @Override
     public List<AnimalSurgery> getSurgeriesByAnimal(Integer idAnimal) {
-        return animalSurgeryRepository.getAnimalSurgeriesByIdAnimalSurgery_Animal_IdAnimal(idAnimal);
+        return animalSurgeryRepository.getAnimalSurgeriesByAnimalIdAnimal(idAnimal);
     }
 
     @Override

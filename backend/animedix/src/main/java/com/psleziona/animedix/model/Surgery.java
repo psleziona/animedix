@@ -1,5 +1,7 @@
 package com.psleziona.animedix.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,7 @@ public class Surgery {
     private String name;
     @NonNull
     private Double price;
-    @OneToMany(mappedBy = "idAnimalSurgery.surgery")
+    @OneToMany(mappedBy = "surgery")
+    @JsonIgnore
     private List<AnimalSurgery> animalSurgeries;
 }

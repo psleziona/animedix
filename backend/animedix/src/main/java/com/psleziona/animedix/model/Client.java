@@ -13,5 +13,6 @@ import java.util.List;
 @NoArgsConstructor(force = true)
 public class Client extends User {
     @OneToMany(mappedBy = "owner")
+    @JsonIgnoreProperties({"owner"})
     private List<Animal> animals;
 }

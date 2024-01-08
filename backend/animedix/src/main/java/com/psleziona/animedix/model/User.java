@@ -1,5 +1,6 @@
 package com.psleziona.animedix.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,7 @@ public abstract class User {
     @NonNull
     private String email;
     @NonNull
+    @JsonIgnore
     private String password;
     @NonNull
     private Role role;

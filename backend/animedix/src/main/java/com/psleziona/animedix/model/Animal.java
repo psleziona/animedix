@@ -32,8 +32,8 @@ public class Animal {
     @OneToMany(mappedBy = "animal")
     @JsonIgnoreProperties({"animal", "doctor"})
     private List<Visit> visits;
-    @OneToMany(mappedBy = "idAnimalSurgery.animal")
-    @JsonIgnoreProperties("usedAssortment")
+    @OneToMany(mappedBy = "animal")
+    @JsonIgnoreProperties({"doctor","surgery","usedAssortment","animal"})
     private List<AnimalSurgery> surgeries;
 
 }

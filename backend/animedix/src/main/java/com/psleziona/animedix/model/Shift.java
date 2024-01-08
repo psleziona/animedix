@@ -1,5 +1,6 @@
 package com.psleziona.animedix.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,6 @@ public class Shift {
             joinColumns = {@JoinColumn(name = "id_shift")},
             inverseJoinColumns = {@JoinColumn(name = "id")}
     )
+    @JsonIgnoreProperties({"shifts, surgeries, visits"})
     private List<Employee> employees;
 }
