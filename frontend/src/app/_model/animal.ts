@@ -8,7 +8,7 @@ export interface Animal {
   breed: string,
   name: string,
   dateOfBirth: string,
-  owner: Client,
-  visits: Visit[],
-  surgeries: AnimalSurgery[]
+  owner?: Client,
+  visits?: Visit[],
+  surgeries?: AnimalSurgery[]
 }

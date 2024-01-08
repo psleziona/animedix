@@ -21,15 +21,7 @@ export class AnimalService {
     return this.http.get<Animal>(this.animalsUrl + `/${id}`);
   }
 
-  updateAnimal(animal: Animal) {
-
-  }
-
   addAnimal(animal: Animal) {
-
-  }
-
-  deleteAnimal(id: number) {
-
+    return this.http.post<Animal>(this.animalsUrl, animal);
   }
 }

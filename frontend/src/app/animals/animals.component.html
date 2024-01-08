@@ -1,5 +1,19 @@
 <div *ngIf="role == 'CLIENT'">
+  <form [formGroup]="animalForm" (submit)="addAnimal()">
+    <label for="name">Imię</label>
+    <input type="text" id="name" formControlName="name">
+
+    <mat-form-field>
+      <label for="dateOfBirth">Data urodzenia</label>
+      <input matInput [matDatepicker]="myDatePicker" id="dateOfBirth" formControlName="dateOfBirth">
+      <mat-datepicker-toggle [for]="myDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <button type="submit">Zaloguj</button>
+  </form>
   <div *ngFor="let animal of animals">
     <a routerLink="/animal/{{animal.idAnimal}}">{{ animal.name }}</a>
   </div>
 </div>
+
