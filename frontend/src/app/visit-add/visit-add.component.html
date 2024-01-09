@@ -1,1 +1,11 @@
 <p>visit-add works!</p>
+wybierz zwierzę,
+dodaj komentarz, wyszukaj doktora, dostępne terminy
+<form [formGroup]="visitForm" (submit)="addVisit()">
+  <label for="animal">Zwierzę</label>
+  <select id="animal" formControlName="animal">
+    <option *ngFor="let animal of animals" value="{{ animal.idAnimal }}">{{ animal.name }}</option>
+  </select>
+  <p>Wybierz przedział wizyty</p>
+  <input type="time">
+</form>

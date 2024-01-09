@@ -15,7 +15,7 @@ export class VisitService {
 
   getArchiveVisits() {
     const date = new Date();
-    const currentTime = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}T${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    const currentTime = `${date.getFullYear()}-${this.addLeadingZeros(date.getMonth() + 1)}-${this.addLeadingZeros(date.getDate())}T${this.addLeadingZeros(date.getHours())}:${this.addLeadingZeros(date.getMinutes())}:${this.addLeadingZeros(date.getSeconds())}`;
     return this.http.get(this.visitUrl + `/period/1970-01-01T00:00:00/${currentTime}`);
   }
 
@@ -42,4 +42,9 @@ export class VisitService {
   getDoctorAvailableDeadlines(idDoctor: number) {
 
   }
+
+  addLeadingZeros(num:number) {
+    return num < 10 ? `0${num}` : num;
+  }
+
 }

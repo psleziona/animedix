@@ -22,7 +22,8 @@ export class AuthInterceptor implements HttpInterceptor {
       });;
       return next.handle(cloned).pipe(
         catchError((error: HttpErrorResponse) => {
-          if (error && error.status === 403) {
+          const currentTime = new Date();
+          if (error && error.status === 403 && this.storageService.getExpirationDate() < currentTime) {
             this.storageService.clean();
           }
           return throwError(() => new Error(error.message || 'An unknown error occurred'));

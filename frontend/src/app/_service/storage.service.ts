@@ -34,6 +34,10 @@ export class StorageService {
     }
   }
 
+  public getExpirationDate() {
+    return new Date(this.getUser()['exp'] * 1000);
+  }
+
   public getRole() {
     return this.getUser()['role'];
   }

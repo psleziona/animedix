@@ -1,5 +1,6 @@
 <div>
-  <button *ngIf="role == 'CLIENT'"><a>Umów wizytę</a></button>
+  <p *ngIf="!isArchive"><a routerLink="/visits/archive">Archiwum</a></p>
+  <a *ngIf="role == 'CLIENT'" routerLink="/visits/add"><button>Umów wizytę</button></a>
   <div *ngIf="!isArchive">
     <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} wizyty</h1>
   </div>
