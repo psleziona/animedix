@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -21,6 +22,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class VisitController {
     private final VisitService visitService;
+
+    @GetMapping("/visits/upcoming")
+    Page<Visit> getUpcomingVisits(Pageable pageable) {
+        return visitService.getUpcomingVisits(pageable);
+    }
 
     @GetMapping("/visits/{idVisit}")
     ResponseEntity<Visit> getVisit(@PathVariable Integer idVisit) {
@@ -33,8 +39,8 @@ public class VisitController {
     }
 
     @GetMapping("/visits/period/{from}/{to}")
-    Page<Visit> getVisitsFromPeriod(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-                                    @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+    Page<Visit> getVisitsFromPeriod(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime from,
+                                    @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime to,
                                     Pageable pageable) {
         return visitService.getVisitsFromPeriod(from, to, pageable);
     }
