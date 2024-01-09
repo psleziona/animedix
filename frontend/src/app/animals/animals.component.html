@@ -1,5 +1,5 @@
-<div *ngIf="role == 'CLIENT'">
-  <form [formGroup]="animalForm" (submit)="addAnimal()">
+<div>
+  <form *ngIf="role == 'CLIENT'" [formGroup]="animalForm" (submit)="addAnimal()">
     <label for="name">Imię</label>
     <input type="text" id="name" formControlName="name">
 
@@ -21,5 +21,7 @@
   <div *ngFor="let animal of animals">
     <a routerLink="/animal/{{animal.idAnimal}}">{{ animal.name }}</a>
   </div>
+
 </div>
+
 

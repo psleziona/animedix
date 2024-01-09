@@ -19,6 +19,11 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { VisitComponent } from './visit/visit.component';
+import { VisitAddComponent } from './visit-add/visit-add.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import {MatInputModule} from "@angular/material/input";
     AnimalsComponent,
     VisitsComponent,
     HomeComponent,
-    AnimalComponent
+    AnimalComponent,
+    EmployeesComponent,
+    EmployeeComponent,
+    PaginationComponent,
+    VisitComponent,
+    VisitAddComponent
   ],
   imports: [
     BrowserModule,

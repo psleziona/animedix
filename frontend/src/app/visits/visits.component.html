@@ -1,1 +1,6 @@
-<p>visits works!</p>
+<div>
+  <button *ngIf="role == 'CLIENT'"><a>Umów wizytę</a></button>
+  <div *ngIf="!isArchive">
+    <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} wizyty</h1>
+  </div>
+</div>

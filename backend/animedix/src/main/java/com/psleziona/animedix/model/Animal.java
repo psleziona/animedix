@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Animal {
     @NonNull
     private String name;
     @NonNull
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties("animals")

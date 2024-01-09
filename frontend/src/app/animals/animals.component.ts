@@ -20,14 +20,26 @@ export class AnimalsComponent {
   });
   role = '';
 
+  //pagination
+  pageNumber = 0;
+  pageSize = 10;
+  first = 0;
+  last = 0;
+  totalPages = 1;
+
+
   constructor(private animalService: AnimalService, private storageService: StorageService) {
     this.role = storageService.getRole();
   }
   ngOnInit() {
     this.animalService.getAnimals(0,10).subscribe({
-      next: animal => {
+      next: response => {
+        console.log(response);
         // @ts-ignore
-        this.animals = animal['content'];
+        this.animals = response['content'];
+        //@ts-ignore
+        this.totalPages = response['totalPages'];
+        this.last = this.totalPages - 1;
       }
     });
   }
@@ -39,6 +51,6 @@ export class AnimalsComponent {
       name: this.animalForm.value.name ?? '',
       dateOfBirth: this.animalForm.value.dateOfBirth ?? ''
     }
-    this.animalService.addAnimal(body).subscribe();
+    this.animalService.addAnimal(body).subscribe(value => window.location.reload());
   }
 }
