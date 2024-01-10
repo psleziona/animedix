@@ -4,4 +4,9 @@
   <div *ngIf="!isArchive">
     <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} wizyty</h1>
   </div>
+  <div>
+    <div *ngFor="let visit of visits">
+      <p><a routerLink="/visit/{{ visit.idVisit }}">Zwierzę {{ visit.animal.name }} Termin: {{ visit.date }}</a></p>
+    </div>
+  </div>
 </div>

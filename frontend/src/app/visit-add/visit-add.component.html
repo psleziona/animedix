@@ -8,13 +8,16 @@
   <textarea id="ownerComments" formControlName="ownerComments"></textarea>
 
   <label for="doctor">Lekarz</label>
-  <select id="doctor" formControlName="doctor">
-
+  <select id="doctor" formControlName="doctor" (change)="getDoctorVisitTerm()">
+    <option value=""></option>
+    <option *ngFor="let doctor of availableTerms" value="{{ doctor.doctor.id }}">{{ doctor.doctor.forename }}</option>
   </select>
 
   <label for="date">Termin</label>
-  <select id="date" formControlName="date"></select>
-
+  <select id="date" formControlName="date">
+    <option *ngFor="let term of terms | async" value="{{ term }}">{{ term }}</option>
+  </select>
+  <button type="submit">Umów wizytę</button>
 </form>
 <h3>Wybierz termin</h3>
 <form [formGroup]="availableTermForm" (submit)="onSetVisitTerm()">
@@ -31,8 +34,4 @@
   <button type="submit">Pokaż dostępne terminy</button>
 </form>
 
-
-    idEmployee: "",<br>
-    "name":"",<br>
-    "availableTerms": []
 

@@ -5,8 +5,8 @@ export interface Visit {
   idVisit?: number,
   date: string,
   ownerComments: string,
-  doctorComments: string,
-  doctorRate: number,
+  doctorComments?: string,
+  doctorRate?: number,
   animal: Animal,
   doctor: Employee
 }
