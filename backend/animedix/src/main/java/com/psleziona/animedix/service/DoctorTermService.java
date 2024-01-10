@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -17,7 +18,7 @@ public class DoctorTermService {
     private final EmployeeService employeeService;
     private final VisitService visitService;
 
-    List<DoctorTerm> getAvailableTerms(LocalDate dayFrom,
+    public List<DoctorTerm> getAvailableTerms(LocalDate dayFrom,
                                               LocalDate dayTo,
                                               LocalTime hourFrom,
                                               LocalTime hourTo) {
@@ -31,23 +32,26 @@ public class DoctorTermService {
             .filter(e -> e.getShifts()
                     .stream()
                     .anyMatch(s -> s.getShiftStart().isAfter(dayFrom.atTime(7,59))
-                            && s.getShiftEnd().isBefore(dayTo.atTime(16,0))))
-                .map(e -> {
-                    var possibleVisitTermsUnfiltered = e.getShifts().stream()
-                            .map(s -> {
-                                var day = s.getShiftStart().toLocalDate();
-                                List<LocalDateTime> temp = new ArrayList<>();
-                                for(LocalTime hour : availableVisitHours) {
-                                    if(hour.isAfter(hourFrom) && hour.isBefore(hourTo))
-                                        temp.add(LocalDateTime.of(day, hour));
-                                }
-                                return temp;
-                            })
-                            .flatMap(List::stream)
-                            .toList();
-                    return new DoctorTerm(e, possibleVisitTermsUnfiltered);
+                            && s.getShiftEnd().isBefore(dayTo.atTime(16,1))))
 
-                }).toList();
+            .map(e -> {
+                var possibleVisitTermsUnfiltered = e.getShifts().stream()
+                        .filter(s -> s.getShiftStart().isAfter(dayFrom.atTime(7,59)) && s.getShiftEnd().isBefore(dayTo.atTime(16,1)))
+                        .sorted(Comparator.comparing(s -> s.getShiftStart().toLocalDate()))
+                        .map(s -> {
+                            var day = s.getShiftStart().toLocalDate();
+                            List<LocalDateTime> temp = new ArrayList<>();
+                            for(LocalTime hour : availableVisitHours) {
+                                if(hour.isAfter(hourFrom.minusMinutes(1)) && hour.isBefore(hourTo.plusMinutes(1)))
+                                    temp.add(LocalDateTime.of(day, hour));
+                            }
+                            return temp;
+                        })
+                        .flatMap(List::stream)
+                        .toList();
+                return new DoctorTerm(e, possibleVisitTermsUnfiltered);
+
+            }).toList();
         availableTerms.stream()
                 .map(dt -> {
                     var doctorVisits = dt.getDoctor().getVisits().stream()
