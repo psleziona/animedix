@@ -9,13 +9,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public List<Employee> getEmployees() {
+        return employeeRepository.findAll();
+    }
 
     @Override
     public Optional<Employee> getEmployee(Integer idEmployee) {

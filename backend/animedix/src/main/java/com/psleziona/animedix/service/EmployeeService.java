@@ -5,6 +5,7 @@ import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -15,5 +16,5 @@ public interface EmployeeService {
     Page<Employee> getEmployees(Pageable pageable);
     Employee setEmployee(Employee employee);
     void deleteEmployee(Integer idEmployee);
-    List<Employee> getAvailableDoctorsInTimePeriod(LocalDateTime from, LocalDateTime to);
+    List<Employee> getEmployees();
 }
