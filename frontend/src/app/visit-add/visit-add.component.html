@@ -1,11 +1,38 @@
-<p>visit-add works!</p>
-wybierz zwierzę,
-dodaj komentarz, wyszukaj doktora, dostępne terminy
 <form [formGroup]="visitForm" (submit)="addVisit()">
   <label for="animal">Zwierzę</label>
   <select id="animal" formControlName="animal">
     <option *ngFor="let animal of animals" value="{{ animal.idAnimal }}">{{ animal.name }}</option>
   </select>
-  <p>Wybierz przedział wizyty</p>
-  <input type="time">
+
+  <label for="ownerComments">Uwagi</label>
+  <textarea id="ownerComments" formControlName="ownerComments"></textarea>
+
+  <label for="doctor">Lekarz</label>
+  <select id="doctor" formControlName="doctor">
+
+  </select>
+
+  <label for="date">Termin</label>
+  <select id="date" formControlName="date"></select>
+
 </form>
+<h3>Wybierz termin</h3>
+<form [formGroup]="availableTermForm" (submit)="onSetVisitTerm()">
+  <input type="date" formControlName="dayFrom">
+
+  <input type="date" formControlName="dayTo">
+  <select id="rangeStart" formControlName="hourFrom">
+    <option *ngFor="let h of visitHours" value="{{ h }}">{{ h }}</option>
+  </select>
+
+  <select id="rangeEnd" formControlName="hourTo">
+    <option *ngFor="let h of visitHours" value="{{ h }}">{{ h }}</option>
+  </select>
+  <button type="submit">Pokaż dostępne terminy</button>
+</form>
+
+
+    idEmployee: "",<br>
+    "name":"",<br>
+    "availableTerms": []
+

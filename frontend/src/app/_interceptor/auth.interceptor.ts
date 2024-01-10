@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
         setHeaders: {
           Authorization:  `Bearer ${token['token']}`
         }
-      });;
+      });
       return next.handle(cloned).pipe(
         catchError((error: HttpErrorResponse) => {
           const currentTime = new Date();
