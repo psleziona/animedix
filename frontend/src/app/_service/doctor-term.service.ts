@@ -12,4 +12,8 @@ export class DoctorTermService {
   getAvailableTerms(dayFrom: string, dayTo:string, hourFrom:string,hourTo:string) {
     return this.http.get<DoctorTerm[]>(this.url + `/${dayFrom}/${dayTo}/${hourFrom}/${hourTo}`);
   }
+
+  getDoctorAvailableTerms(dayFrom: string, dayTo:string, hourFrom:string,hourTo:string,idDoctor: number) {
+    return this.http.get<DoctorTerm>(this.url + `doctor/${idDoctor}/${dayFrom}/${dayTo}/${hourFrom}/${hourTo}`);
+  }
 }

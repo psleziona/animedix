@@ -6,6 +6,7 @@ export interface Assortment {
   name: string,
   price: number,
   quantity: number,
+  volume: number,
   unit: AssortmentUnit,
   category: AssortmentCategory
 }

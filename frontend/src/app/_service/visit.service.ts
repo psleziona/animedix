@@ -19,28 +19,20 @@ export class VisitService {
     return this.http.get(this.visitUrl + `/period/1970-01-01T00:00:00/${currentTime}`);
   }
 
-  getDoctorVisits(idDoctor: number) {
-    return this.http.get(this.visitUrl + "/doctor/" + idDoctor);
+  getVisit(idVisit: number) {
+    return this.http.get<Visit>(this.visitUrl + "/" + idVisit);
   }
 
   addVisit(visit: Visit) {
-    return this.http.post<Visit>(this.visitUrl, visit);
+    return this.http.post(this.visitUrl, visit);
   }
 
   rateVisit(idVisit:number, rate: number) {
     return this.http.post(this.visitUrl + `/rate/${idVisit}/${rate}`, {});
   }
 
-  getAvailableDeadlines(from: string, to: string) {
-
-  }
-
-  getAvailableDoctors(from: string, to: string) {
-
-  }
-
-  getDoctorAvailableDeadlines(idDoctor: number) {
-
+  addDoctorComment(visit: Visit) {
+    return this.http.put(this.visitUrl + `/${visit.idVisit}`, visit);
   }
 
   addLeadingZeros(num:number) {

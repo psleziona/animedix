@@ -24,6 +24,18 @@ import { EmployeeComponent } from './employee/employee.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { VisitComponent } from './visit/visit.component';
 import { VisitAddComponent } from './visit-add/visit-add.component';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
+import { AnimalSurgeryComponent } from './animal-surgery/animal-surgery.component';
+import { AnimalSurgeryAddComponent } from './animal-surgery-add/animal-surgery-add.component';
+import { SurgeriesComponent } from './surgeries/surgeries.component';
+import { SurgeryComponent } from './surgery/surgery.component';
+import { AssortmentsComponent } from './assortments/assortments.component';
+import { AssortmentComponent } from './assortment/assortment.component';
+import { AssortmentAddComponent } from './assortment-add/assortment-add.component';
+import { ShiftsComponent } from './shifts/shifts.component';
+import { ShiftComponent } from './shift/shift.component';
+import { AnimalSurgeriesComponent } from './animal-surgeries/animal-surgeries.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +50,19 @@ import { VisitAddComponent } from './visit-add/visit-add.component';
     EmployeeComponent,
     PaginationComponent,
     VisitComponent,
-    VisitAddComponent
+    VisitAddComponent,
+    EmployeeAddComponent,
+    AnimalSurgeryComponent,
+    AnimalSurgeryAddComponent,
+    SurgeriesComponent,
+    SurgeryComponent,
+    AssortmentsComponent,
+    AssortmentComponent,
+    AssortmentAddComponent,
+    ShiftsComponent,
+    ShiftComponent,
+    AnimalSurgeriesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

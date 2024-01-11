@@ -2,7 +2,11 @@
   {{ this.userRole }}
   <ul>
     <li *ngIf="!isAuth"><a routerLink="/login">Zaloguj</a></li>
-    <li *ngIf="isAuth && userRole=='CLIENT'"><a routerLink="/animals">Zwierzęta</a></li>
+    <li *ngIf="!isAuth"><a routerLink="/register">Zarejestruj</a></li>
+    <li *ngIf="isAuth"><a routerLink="/animals">Zwierzęta</a></li>
     <li *ngIf="isAuth"><a routerLink="/visits">Wizyty</a></li>
+    <li *ngIf="isAuth"><a routerLink="/animalSurgeries">Zabiegi</a></li>
+    <li *ngIf="isAuth"><a routerLink="/shifts">Zmiany</a></li>
+    <li *ngIf="isAuth"><a routerLink="/assortments">Asortyment</a></li>
   </ul>
 </div>

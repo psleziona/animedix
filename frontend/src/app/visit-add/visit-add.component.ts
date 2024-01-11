@@ -9,6 +9,7 @@ import {DoctorTermService} from "../_service/doctor-term.service";
 import {Observable, Subject} from "rxjs";
 import {Visit} from "../_model/visit";
 import {VisitService} from "../_service/visit.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-visit-add',
@@ -39,7 +40,8 @@ export class VisitAddComponent {
 
   constructor(private animalService: AnimalService,
               private doctorTermService: DoctorTermService,
-              private visitService: VisitService) {
+              private visitService: VisitService,
+              private router: Router) {
     this.terms = new Subject<string[]>();
   }
 
@@ -68,7 +70,9 @@ export class VisitAddComponent {
       doctor: doctor
     }
 
-    this.visitService.addVisit(visit).subscribe();
+    this.visitService.addVisit(visit).subscribe(
+      value => this.router.navigateByUrl('/visits')
+    );
   }
 
   onSetVisitTerm() {

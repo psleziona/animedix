@@ -42,7 +42,6 @@ export class VisitsComponent {
         response => {
           // @ts-ignore
           this.visits = response['content'];
-          console.log(response);
         }
       )
     }

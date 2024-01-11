@@ -1,1 +1,23 @@
-<p>visit works!</p>
+<p>Zwierzę: {{ visit?.animal?.name ?? ''}}</p>
+<p>Data wizyty: {{ visit?.date }}</p>
+<p>Informacje klienta {{ visit?.ownerComments }}</p>
+<p *ngIf="visit?.doctorComments != null">Informacje od lekarza: {{ visit?.doctorComments }}</p>
+<p *ngIf="role == 'ADMIN'">Ocena wizyty: {{ visit?.doctorRate }}</p>
+<div *ngIf="role == 'DOCTOR' && isPossibleToAddDoctorComments">
+  <label for="doctorNote">Notatka po wizycie</label>
+  <textarea id="doctorNote" [formControl]="doctorNote"></textarea>
+  <button (click)="addDoctorNote()">Dodaj notatkę</button>
+  <a routerLink="/animalSurgery/add/{{ visit?.animal?.idAnimal }}">Umów zabieg</a>
+
+  Zaplanuj operację? to do zrobienia, bo czy lekarz bierze pierwszy dostepny termin dla siebie czy wybiera dzien kiedy ma byc
+
+</div>
+<div *ngIf="role == 'CLIENT' && isPossibleToRate">
+  <label for="rate">Ocena wizyty</label>
+  <select name="rate" id="rate" [formControl]="doctorRate">
+    <option *ngFor="let rate of rates" value="{{ rate }}">{{ rate }}</option>
+  </select>
+  <button (click)="rateVisit()">Oceń wizytę</button>
+</div>
+
+
