@@ -20,13 +20,15 @@ public class Assortment {
     @NonNull
     private Double price;
     @NonNull
-    private Double quantity;
+    private Double volume;
+    @NonNull
+    private Integer quantity;
     @NonNull
     private AssortmentUnit unit;
     @NonNull
     private AssortmentCategory category;
-    @ManyToMany(mappedBy = "usedAssortment")
+    @OneToMany(mappedBy = "assortment")
     @JsonIgnore
-    private List<AnimalSurgery> usedInSurgeries;
+    private List<UsedAssortment> usedInSurgeries;
 
 }

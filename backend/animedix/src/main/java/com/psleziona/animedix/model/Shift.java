@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 public class Shift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
