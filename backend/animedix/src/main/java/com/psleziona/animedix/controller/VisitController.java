@@ -28,6 +28,16 @@ public class VisitController {
         return visitService.getUpcomingVisits(pageable);
     }
 
+    @GetMapping("/visits/archive")
+    Page<Visit> getArchiveVisit(Pageable pageable) {
+        return visitService.getArchiveVisits(pageable);
+    }
+
+    @GetMapping("/visits/current")
+    ResponseEntity<Visit> getNextVisit() {
+        return ResponseEntity.of(visitService.getNextVisit());
+    }
+
     @GetMapping("/visits/{idVisit}")
     ResponseEntity<Visit> getVisit(@PathVariable Integer idVisit) {
         return ResponseEntity.of(visitService.getVisit(idVisit));

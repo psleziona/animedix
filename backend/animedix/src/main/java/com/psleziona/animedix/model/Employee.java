@@ -1,5 +1,6 @@
 package com.psleziona.animedix.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,8 +23,10 @@ public class Employee extends User {
     @NonNull
     private JobRole jobRole;
     @ManyToMany(mappedBy = "employees")
+    @JsonIgnoreProperties({"employees"})
     private List<Shift> shifts;
     @OneToMany(mappedBy = "doctor")
+    @JsonIgnoreProperties({"usedAssortment"})
     private List<AnimalSurgery> surgeries;
     @OneToMany(mappedBy = "doctor")
     private List<Visit> visits;

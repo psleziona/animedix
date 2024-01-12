@@ -17,14 +17,10 @@ public class Assortment {
     private Integer idAssortment;
     @NonNull
     private String name;
-    @NonNull
-    private Double price;
-    @NonNull
     private Double volume;
-    @NonNull
     private Integer quantity;
-    @NonNull
     private AssortmentUnit unit;
+    private AssortmentType type;
     @NonNull
     private AssortmentCategory category;
     @OneToMany(mappedBy = "assortment")

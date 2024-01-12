@@ -22,8 +22,8 @@ public class DoctorTermController {
         return doctorTermService.getAvailableTerms(daysFrom,daysTo,hourFrom,hoursTo);
     }
 
-    @GetMapping("/term/doctor/{idDoctor}/{daysFrom}/{daysTo}/{hourFrom}/{hoursTo}")
-    ResponseEntity<DoctorTerm> getDoctorAvailableVisitTerms(@PathVariable Integer idDoctor, @PathVariable LocalDate daysFrom, @PathVariable LocalDate daysTo, @PathVariable LocalTime hourFrom, @PathVariable LocalTime hoursTo) {
-        return ResponseEntity.of(doctorTermService.getDoctorAvailableTerms(daysFrom,daysTo,hourFrom,hoursTo,idDoctor));
+    @GetMapping("/term/doctor/{daysFrom}/{daysTo}")
+    ResponseEntity<DoctorTerm> getDoctorAvailableVisitTerms(@PathVariable LocalDate daysFrom, @PathVariable LocalDate daysTo) {
+        return ResponseEntity.of(doctorTermService.getDoctorAvailableTerms(daysFrom,daysTo));
     }
 }

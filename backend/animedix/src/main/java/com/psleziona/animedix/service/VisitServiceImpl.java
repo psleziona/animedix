@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,7 +40,41 @@ public class VisitServiceImpl implements VisitService {
                 .filter(visit -> visit.getDate().isAfter(LocalDateTime.now()))
                 .toList();
         return new PageImpl<>(visits);
+    }
+
+    @Override
+    public Page<Visit> getArchiveVisits(Pageable pageable) {
+        User currentUser = authService.getSessionUser();
+        if(currentUser.getRole() == Role.CLIENT) {
+            var visits = animalRepository.getAnimalsByOwnerId(currentUser.getId())
+                    .stream().map(Animal::getVisits)
+                    .flatMap(v -> v.stream().filter(visit -> visit.getDate().isBefore(LocalDateTime.now())))
+                    .toList();
+            return new PageImpl<>(visits);
         }
+        var visits = ((Employee)currentUser).getVisits()
+                .stream()
+                .filter(visit -> visit.getDate().isBefore(LocalDateTime.now()))
+                .toList();
+        return new PageImpl<>(visits);
+    }
+
+    @Override
+    public Optional<Visit> getNextVisit() {
+        User currentUser = authService.getSessionUser();
+        if(currentUser.getRole() == Role.CLIENT) {
+            return animalRepository.getAnimalsByOwnerId(currentUser.getId())
+                    .stream()
+                    .map(Animal::getVisits)
+                    .flatMap(Collection::stream)
+                    .filter(v -> v.getDate().plusMinutes(30).isAfter(LocalDateTime.now()))
+                    .findFirst();
+        }
+        return ((Employee)currentUser).getVisits()
+                .stream()
+                .filter(visit -> visit.getDate().plusMinutes(30).isAfter(LocalDateTime.now()))
+                .findFirst();
+    }
 
     @Override
     public Optional<Visit> getVisit(Integer idVisit) {

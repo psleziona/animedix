@@ -12,6 +12,8 @@ import java.util.Optional;
 
 public interface VisitService {
     Page<Visit> getUpcomingVisits(Pageable pageable);
+    Page<Visit> getArchiveVisits(Pageable pageable);
+    Optional<Visit> getNextVisit();
     Optional<Visit> getVisit(Integer idVisit);
     List<Visit> getVisitsForDay(LocalDate date);
     Page<Visit> getVisitsFromPeriod(LocalDateTime start, LocalDateTime finish, Pageable pageable);

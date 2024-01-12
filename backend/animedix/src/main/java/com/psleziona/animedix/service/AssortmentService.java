@@ -1,6 +1,7 @@
 package com.psleziona.animedix.service;
 
 import com.psleziona.animedix.model.Assortment;
+import com.psleziona.animedix.model.UsedAssortment;
 
 import java.util.List;
 import java.util.Optional;

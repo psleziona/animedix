@@ -2,6 +2,8 @@ package com.psleziona.animedix.controller;
 
 
 import com.psleziona.animedix.model.AnimalSurgery;
+import com.psleziona.animedix.model.UsedAssortment;
+import com.psleziona.animedix.model.UsedAssortmentRequest;
 import com.psleziona.animedix.service.AnimalSurgeryService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -10,7 +12,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -24,6 +25,21 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class AnimalSurgeryController {
     private final AnimalSurgeryService animalSurgeryService;
+
+    @GetMapping("/animalSurgeries/upcoming")
+    Page<AnimalSurgery> getUpcomingSurgeries(Pageable pageable) {
+        return animalSurgeryService.getUpcomingSurgeries(pageable);
+    }
+
+    @GetMapping("/animalSurgeries/archive")
+    Page<AnimalSurgery> getArchiveSurgeries(Pageable pageable) {
+        return animalSurgeryService.getArchiveSurgeries(pageable);
+    }
+
+    @GetMapping("/animalSurgeries/current")
+    ResponseEntity<AnimalSurgery> getNextSurgery() {
+        return ResponseEntity.of(animalSurgeryService.getNextSurgery());
+    }
 
     @GetMapping("/animalSurgeries/{idSurgery}")
     ResponseEntity<AnimalSurgery> getAnimalSurgery(@PathVariable Integer idSurgery) {
@@ -50,6 +66,12 @@ public class AnimalSurgeryController {
     @GetMapping("/animalSurgeries/animal/{idAnimal}")
     List<AnimalSurgery> getAnimalSurgeriesByAnimal(@PathVariable Integer idAnimal) {
         return animalSurgeryService.getSurgeriesByAnimal(idAnimal);
+    }
+
+    @PostMapping("/animalSurgeries/assortment")
+    ResponseEntity<Void> addAssortmentToSurgery(@RequestBody UsedAssortmentRequest usedAssortment) {
+        animalSurgeryService.setUsedAssortment(usedAssortment.getIdSurgery(), usedAssortment.getIdAssortment(), usedAssortment.getQuantity(), usedAssortment.getVolume());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/animalSurgeries")
