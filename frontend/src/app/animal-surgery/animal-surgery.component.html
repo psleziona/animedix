@@ -1,1 +1,16 @@
-<p>animal-surgery works!</p>
+<div>
+  <p>Zwierzę: {{ surgery?.animal?.name }}</p>
+  <p>Zabieg: {{ surgery?.surgery?.name }}</p>
+</div>
+<select [formControl]="selectedAssortment" (change)="onAssortmentSelected()">
+  <option value=""></option>
+  <option value="{{ assortment.idAssortment }}" *ngFor="let assortment of assortments">{{ assortment.name }}</option>
+</select>
+<input *ngIf="assortmentType != ''" [formControl]="usedQuantityAmount"> {{ unit }}
+<button *ngIf="assortmentType != ''" (click)="addAssortmentToSurgery()">Użyj</button>
+<div>
+  Użyty asortyment
+  <ul>
+    <li *ngFor="let used of surgery?.usedAssortment">{{ used.assortment?.name }} {{ used.quantity }} {{ used.amount }} {{ used.assortment?.unit }}</li>
+  </ul>
+</div>

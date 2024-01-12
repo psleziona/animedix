@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Subject} from "rxjs";
 
 const USER_KEY = 'auth-user';
 
@@ -6,16 +7,19 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class StorageService {
-
+  loggedIn = new Subject<boolean>();
   constructor() { }
 
   clean() {
     window.sessionStorage.clear();
+    window.location.reload();
+    this.loggedIn.next(false);
   }
 
   public saveUser(user: any) {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    this.loggedIn.next(true);
   }
 
   public getUser() {

@@ -19,5 +19,16 @@ export class MenuComponent {
       const user = this.storageService.getUser();
       this.userRole = user['role'];
     }
+
+    this.storageService.loggedIn.subscribe(v => {
+      if(v) {
+        this.isAuth = true;
+        const user = this.storageService.getUser();
+        this.userRole = user['role'];
+      }
+    });
+  }
+  logout() {
+    this.storageService.clean();
   }
 }

@@ -1,1 +1,7 @@
-<p>assortments works!</p>
+<h1>Dostępny asortyment</h1>
+<a routerLink="/assortmentAdd"><button>Dodaj</button></a>
+<div *ngFor="let a of assortments$ | async">
+  <p><a routerLink="/assortment/{{a.idAssortment}}">Nazwa {{ a.name }}</a></p>
+  <p>Pozostało: {{ a.volume }}{{ a.quantity }} {{ a.unit }}</p>
+  <hr>
+</div>

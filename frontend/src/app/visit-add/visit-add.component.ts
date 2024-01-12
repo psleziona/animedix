@@ -32,8 +32,8 @@ export class VisitAddComponent {
   availableTermForm = new FormGroup({
     dayFrom: new FormControl(''),
     dayTo: new FormControl(''),
-    hourFrom: new FormControl('from'),
-    hourTo: new FormControl('to')
+    hourFrom: new FormControl(''),
+    hourTo: new FormControl('')
   })
 
   visitHours = ['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30'];

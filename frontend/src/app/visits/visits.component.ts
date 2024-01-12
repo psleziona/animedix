@@ -13,6 +13,7 @@ export class VisitsComponent {
   role = '';
   isArchive = false;
   visits?: Visit[];
+  currentVisit? : Visit;
 
   constructor(
     private storageService: StorageService,
@@ -30,20 +31,12 @@ export class VisitsComponent {
       }
     });
 
-    if(this.isArchive) {
-      this.visitService.getArchiveVisits().subscribe(
-        response => {
-          // @ts-ignore
-          this.visits = response['content'];
-        }
-      )
-    } else {
-      this.visitService.getUpcomingVisits().subscribe(
-        response => {
-          // @ts-ignore
-          this.visits = response['content'];
-        }
-      )
-    }
+    this.visitService.getVisits(this.isArchive).subscribe(
+      response => // @ts-ignore
+        this.visits = response['content']
+    );
+
+    this.visitService.getNextVisit().subscribe(visit => this.currentVisit = visit)
   }
+
 }

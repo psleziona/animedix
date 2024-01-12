@@ -1,1 +1,7 @@
-<p>employees works!</p>
+<h1>Pracownicy</h1>
+<a routerLink="/employeeAdd"><button>Dodaj pracownika</button></a>
+<div>
+  <div *ngFor="let employee of employees$ | async">
+    <p><a routerLink="/employee/{{ employee.id }}">{{employee.forename}} {{employee.surname}}</a></p>
+  </div>
+</div>

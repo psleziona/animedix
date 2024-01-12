@@ -1,1 +1,18 @@
-<p>animal-surgery-add works!</p>
+<p>{{ animal?.name }}</p>
+
+<label for="surgery">Zabieg</label>
+<select name="surgery" id="surgery" [formControl]="selectedSurgery">
+  <option *ngFor="let surgery of surgeries" value="{{ surgery.idSurgery }}">{{ surgery.name }}</option>
+</select>
+
+<h3>Wybierz termin</h3>
+<form [formGroup]="availableTermForm" (submit)="getAvailableTerms()">
+  <input type="date" formControlName="dayFrom">
+  <input type="date" formControlName="dayTo">
+  <button type="submit">Pokaż dostępne terminy</button>
+</form>
+<label for="date">Termin</label>
+<select id="date" [formControl]="surgeryDate">
+  <option *ngFor="let term of terms | async" value="{{ term }}">{{ term }}</option>
+</select>
+<button (click)="setSurgery()">Zapisz zabieg</button>

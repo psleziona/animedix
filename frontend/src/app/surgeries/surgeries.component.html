@@ -1,1 +1,15 @@
-<p>surgeries works!</p>
+<h1>Dostępne zabiegi</h1>
+<form *ngIf="role == 'ADMIN'" [formGroup]="addSurgeryForm" (submit)="addSurgery()">
+  <label for="name">Nazwa zabiegu</label>
+  <input type="text" id="name" formControlName="name">
+  <label for="price">Cena</label>
+  <input type="number" id="price" formControlName="price">
+  <button type="submit">Dodaj</button>
+</form>
+<div>
+  <div *ngFor="let s of surgeries$ | async">
+    <p>Nazwa: {{ s.name }}</p>
+    <p>Cena: {{ s.price }}</p>
+    <hr>
+  </div>
+</div>

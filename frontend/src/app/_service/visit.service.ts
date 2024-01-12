@@ -9,14 +9,20 @@ export class VisitService {
   private visitUrl = 'http://localhost:8080/api/visits';
   constructor(private http: HttpClient) { }
 
+  getVisits(archive:boolean) {
+    return archive ? this.getArchiveVisits() : this.getUpcomingVisits();
+  }
+
   getUpcomingVisits() {
     return this.http.get(this.visitUrl + "/upcoming");
   }
 
   getArchiveVisits() {
-    const date = new Date();
-    const currentTime = `${date.getFullYear()}-${this.addLeadingZeros(date.getMonth() + 1)}-${this.addLeadingZeros(date.getDate())}T${this.addLeadingZeros(date.getHours())}:${this.addLeadingZeros(date.getMinutes())}:${this.addLeadingZeros(date.getSeconds())}`;
-    return this.http.get(this.visitUrl + `/period/1970-01-01T00:00:00/${currentTime}`);
+    return this.http.get(this.visitUrl + `/archive`);
+  }
+
+  getNextVisit() {
+    return this.http.get<Visit>(this.visitUrl + "/current");
   }
 
   getVisit(idVisit: number) {

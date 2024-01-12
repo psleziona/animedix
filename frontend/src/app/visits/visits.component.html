@@ -1,10 +1,13 @@
 <div>
   <p *ngIf="!isArchive"><a routerLink="/visits/archive">Archiwum</a></p>
   <a *ngIf="role == 'CLIENT'" routerLink="/visits/add"><button>Umów wizytę</button></a>
-  <div *ngIf="!isArchive">
-    <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} wizyty</h1>
+
+  <div *ngIf="!isArchive && currentVisit">
+    <h1>Obecna/Najbliższa wizyta</h1>
+    <p><a routerLink="/visit/{{ currentVisit.idVisit }}">Zwierzę {{ currentVisit.animal.name }} Termin: {{ currentVisit.date }}</a></p>
   </div>
   <div>
+    <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} wizyty</h1>
     <div *ngFor="let visit of visits">
       <p><a routerLink="/visit/{{ visit.idVisit }}">Zwierzę {{ visit.animal.name }} Termin: {{ visit.date }}</a></p>
     </div>

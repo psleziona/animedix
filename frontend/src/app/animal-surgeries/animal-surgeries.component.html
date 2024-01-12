@@ -1,1 +1,15 @@
-<p>animal-surgeries works!</p>
+<div>
+  <p *ngIf="!isArchive"><a routerLink="/animalSurgeries/archive">Archiwum</a></p>
+  <div *ngIf="currentSurgery && !isArchive">
+    <h2>Najbliższy/obecny zabieg</h2>
+    <p><a routerLink="/animalSurgery/{{ currentSurgery.idAnimalSurgery }}">
+      Zwierzę {{ currentSurgery.animal?.name }} Termin: {{ currentSurgery.date }} Zabieg: {{ currentSurgery.surgery?.name }}</a></p>
+  </div>
+  <div>
+    <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} zabiegi</h1>
+    <div *ngFor="let surgery of animalSurgeries">
+      <p><a routerLink="/animalSurgery/{{ surgery.idAnimalSurgery }}">
+        Zwierzę {{ surgery.animal?.name }} Termin: {{ surgery.date }} Zabieg: {{ surgery.surgery?.name }}</a></p>
+    </div>
+  </div>
+</div>

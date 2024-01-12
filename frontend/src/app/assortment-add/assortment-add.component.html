@@ -1,1 +1,28 @@
-<p>assortment-add works!</p>
+<h2>Dodaj nowy produkt</h2>
+<form [formGroup]="assortmentAddForm" (submit)="addAssortment()">
+  <label for="name">Nazwa</label>
+  <input type="text" id="name" formControlName="name">
+  <label for="type">Rodzaj</label>
+  <select id="type" formControlName="type" (change)="onTypeChange()">
+    <option value=""></option>
+    <option *ngFor="let type of assortmentType" value="{{type}}">{{type}}</option>
+  </select>
+  <div *ngIf="selectedType == 'COUNTABLE'">
+    <label for="quantity">Ilość</label>
+    <input type="number" id="quantity" formControlName="quantity">
+  </div>
+  <div *ngIf="selectedType == 'UNCOUNTABLE'">
+    <label for="volume">Ilość</label>
+    <input type="number" id="volume" formControlName="volume">
+    <label for="unit">Jednostka</label>
+    <select name="unit" id="unit" formControlName="unit">
+      <option *ngFor="let unit of assortmentUnit" value="{{ unit }}">{{ unit }}</option>
+    </select>
+  </div>
+  <label for="category">Kategoria</label>
+  <select id="category" formControlName="category">
+    <option value=""></option>
+    <option *ngFor="let c of assortmentCategory" value="{{ c }}">{{ c }}</option>
+  </select>
+  <button type="submit">Dodaj</button>
+</form>

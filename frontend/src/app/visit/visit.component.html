@@ -7,10 +7,9 @@
   <label for="doctorNote">Notatka po wizycie</label>
   <textarea id="doctorNote" [formControl]="doctorNote"></textarea>
   <button (click)="addDoctorNote()">Dodaj notatkę</button>
+</div>
+<div *ngIf="role == 'DOCTOR'">
   <a routerLink="/animalSurgery/add/{{ visit?.animal?.idAnimal }}">Umów zabieg</a>
-
-  Zaplanuj operację? to do zrobienia, bo czy lekarz bierze pierwszy dostepny termin dla siebie czy wybiera dzien kiedy ma byc
-
 </div>
 <div *ngIf="role == 'CLIENT' && isPossibleToRate">
   <label for="rate">Ocena wizyty</label>

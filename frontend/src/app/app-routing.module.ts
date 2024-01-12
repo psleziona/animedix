@@ -19,6 +19,9 @@ import {RegisterComponent} from "./register/register.component";
 import {AssortmentsComponent} from "./assortments/assortments.component";
 import {AssortmentComponent} from "./assortment/assortment.component";
 import {AssortmentAddComponent} from "./assortment-add/assortment-add.component";
+import {EmployeesComponent} from "./employees/employees.component";
+import {EmployeeComponent} from "./employee/employee.component";
+import {EmployeeAddComponent} from "./employee-add/employee-add.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +35,7 @@ const routes: Routes = [
   { path: 'visit/:id', component: VisitComponent, canActivate: [AuthGuard] },
   { path: 'animalSurgery/:id', component: AnimalSurgeryComponent, canActivate: [AuthGuard] },
   { path: 'animalSurgeries', component: AnimalSurgeriesComponent, canActivate: [AuthGuard] },
+  { path: 'animalSurgeries/archive', component: AnimalSurgeriesComponent, canActivate: [AuthGuard] },
   { path: 'animalSurgery/add/:id', component: AnimalSurgeryAddComponent, canActivate: [AuthGuard] },
   { path: 'surgeries', component: SurgeriesComponent, canActivate: [AuthGuard] },
   { path: 'surgery/:id', component: SurgeryComponent, canActivate: [AuthGuard] },
@@ -40,6 +44,9 @@ const routes: Routes = [
   { path: 'assortments', component: AssortmentsComponent, canActivate: [AuthGuard] },
   { path: 'assortment/:id', component: AssortmentComponent, canActivate: [AuthGuard] },
   { path: 'assortmentAdd', component: AssortmentAddComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuard] },
+  { path: 'employee/:id', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'employeeAdd', component: EmployeeAddComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
