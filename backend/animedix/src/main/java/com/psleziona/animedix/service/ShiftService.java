@@ -11,6 +11,7 @@ public interface ShiftService {
     Optional<Shift> getShift(Integer idShift);
     List<Shift> getEmployeeShifts(Integer idEmployee);
     List<Shift> getShiftsByDate(LocalDate date);
+    List<Shift> getShiftsByMonth(LocalDate date);
     Shift setShift(Shift shift);
     void deleteShift(Integer idShift);
 }

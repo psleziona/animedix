@@ -9,7 +9,4 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ShiftRepository extends JpaRepository<Shift, Integer> {
-//    @Query(value = "SELECT s FROM Shift s WHERE s.shiftStart>= :date AND s.shiftEnd <= :date")
-//    List<Shift> getShiftsByDate(LocalDateTime date);
-    List<Shift> findShiftsByShiftStartContainsAndShiftEndContains(LocalDate start, LocalDate end);
 }

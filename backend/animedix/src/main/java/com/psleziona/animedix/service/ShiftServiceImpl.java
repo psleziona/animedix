@@ -31,7 +31,17 @@ public class ShiftServiceImpl implements ShiftService{
 
     @Override
     public List<Shift> getShiftsByDate(LocalDate date) {
-        return shiftRepository.findShiftsByShiftStartContainsAndShiftEndContains(date, date);
+        return shiftRepository.findAll()
+                .stream()
+                .filter(s -> s.getShiftStart().toLocalDate().equals(date)).toList();
+    }
+
+    @Override
+    public List<Shift> getShiftsByMonth(LocalDate date) {
+        return shiftRepository.findAll()
+                .stream()
+                .filter(s -> s.getShiftStart().getMonth() == date.getMonth())
+                .sorted((o1, o2) -> o1.getShiftStart().isBefore(o2.getShiftStart()) ? -1 : 1).toList();
     }
 
     @Override

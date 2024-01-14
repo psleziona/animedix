@@ -18,7 +18,6 @@ public class Visit {
     @NonNull
     private LocalDateTime date;
     private String ownerComments;
-    @NonNull
     private String doctorComments;
     private Integer doctorRate;
     @ManyToOne
@@ -29,5 +28,4 @@ public class Visit {
     @JoinColumn(name = "id")
     @JsonIgnoreProperties({"shifts", "surgeries", "visits"})
     private Employee doctor;
-
 }

@@ -69,6 +69,7 @@ public class AnimalSurgeryServiceImpl implements AnimalSurgeryService{
                     .map(Animal::getSurgeries)
                     .flatMap(Collection::stream)
                     .filter(s -> s.getDate().plusMinutes(30).isAfter(LocalDateTime.now()))
+                    .sorted()
                     .findFirst();
         }
         return ((Employee) currentUser).getSurgeries()

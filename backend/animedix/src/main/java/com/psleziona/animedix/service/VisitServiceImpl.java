@@ -62,12 +62,14 @@ public class VisitServiceImpl implements VisitService {
     @Override
     public Optional<Visit> getNextVisit() {
         User currentUser = authService.getSessionUser();
+        //wybiera nie najszybsza
         if(currentUser.getRole() == Role.CLIENT) {
             return animalRepository.getAnimalsByOwnerId(currentUser.getId())
                     .stream()
                     .map(Animal::getVisits)
                     .flatMap(Collection::stream)
                     .filter(v -> v.getDate().plusMinutes(30).isAfter(LocalDateTime.now()))
+                    .sorted()
                     .findFirst();
         }
         return ((Employee)currentUser).getVisits()

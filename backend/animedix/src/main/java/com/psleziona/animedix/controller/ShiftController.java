@@ -34,6 +34,11 @@ public class ShiftController {
         return shiftService.getShiftsByDate(date);
     }
 
+    @GetMapping("/shifts/month/{date}")
+    List<Shift> getShiftsByMonth(@PathVariable @DateTimeFormat(pattern = "yyyy-MM") LocalDate date) {
+        return shiftService.getShiftsByMonth(date);
+    }
+
     @PostMapping("/shifts")
     ResponseEntity<Void> setShift(@RequestBody Shift shift) {
         Shift createdShift = shiftService.setShift(shift);
