@@ -2,13 +2,15 @@
   <ul>
     <li *ngIf="!isAuth"><a routerLink="/login">Zaloguj</a></li>
     <li *ngIf="!isAuth"><a routerLink="/register">Zarejestruj</a></li>
+    <li *ngIf="isAuth && (userRole == 'DOCTOR' || userRole == 'ADMIN')"><a routerLink="/employee/{{userId}}">Profil</a></li>
+    <li *ngIf="isAuth && userRole == 'CLIENT'"><a routerLink="/client/{{userId}}">Profil</a></li>
     <li *ngIf="isAuth"><a routerLink="/animals">Zwierzęta</a></li>
     <li *ngIf="isAuth"><a routerLink="/visits">Wizyty</a></li>
     <li *ngIf="isAuth"><a routerLink="/animalSurgeries">Zabiegi</a></li>
-    <li *ngIf="isAuth"><a routerLink="/shifts">Zmiany</a></li>
+    <li *ngIf="isAuth && (userRole == 'DOCTOR' || userRole == 'ADMIN')"><a routerLink="/shifts">Zmiany</a></li>
     <li *ngIf="isAuth && (userRole == 'DOCTOR' || userRole == 'ADMIN')"><a routerLink="/assortments">Asortyment</a></li>
     <li *ngIf="isAuth"><a routerLink="/surgeries">Dostępne operacje</a></li>
-    <li *ngIf="isAuth && (userRole == 'DOCTOR' || userRole == 'ADMIN')"><a routerLink="/employees">Pracownicy</a></li>
+    <li *ngIf="isAuth && userRole == 'ADMIN'"><a routerLink="/employees">Pracownicy</a></li>
     <li (click)="logout()"><a>Wyloguj</a></li>
   </ul>
 </div>

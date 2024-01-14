@@ -1,1 +1,22 @@
-<p>shifts works!</p>
+<h1>Aktualny miesiąc: </h1>
+Wybierz miesiąc
+<input type="month" (change)="onMonthChange()" [formControl]="selectedDate">
+<p>Wybierz dzień
+  <input type="date" [formControl]="selectedDate" (change)="onDayChange()">
+</p>
+<button (click)="getExcel()">Pobierz</button>
+<label for="employee">Pracownik</label>
+<select name="employee" id="employee" [formControl]="userSelect" (change)="onUserSelected()">
+  <option value=""></option>
+  <option *ngFor="let e of availableUsers" value="{{ e.id }}">{{ e.forename }} {{ e.surname }}</option>
+</select>
+<table class="table" id="shifts">
+  <tr>
+    <th>Zmiana</th>
+    <th *ngFor="let x of availableUsers">Pracownik</th>
+  </tr>
+  <tr *ngFor="let s of showedShifts">
+    <td>{{ s.shiftStart }} - {{ s.shiftEnd }}</td>
+    <td *ngFor="let e of s.employees">{{ e.forename }} {{ e.surname }}</td>
+  </tr>
+</table>

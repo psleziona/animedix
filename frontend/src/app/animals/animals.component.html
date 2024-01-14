@@ -3,12 +3,9 @@
     <label for="name">Imię</label>
     <input type="text" id="name" formControlName="name">
 
-    <mat-form-field>
-      <label for="dateOfBirth">Data urodzenia</label>
-      <input matInput [matDatepicker]="myDatePicker" id="dateOfBirth" formControlName="dateOfBirth">
-      <mat-datepicker-toggle [for]="myDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #myDatePicker></mat-datepicker>
-    </mat-form-field>
+    <label for="dateOfBirth">Data urodzenia</label>
+    <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+
 
     <label for="species">Gatunek</label>
     <input type="text" id="species" formControlName="species">
@@ -18,6 +15,7 @@
 
     <button type="submit">Dodaj zwierzę</button>
   </form>
+  <h1>{{ role == 'CLIENT' ? 'Twoje zwierzęta' : 'Baza zwierząt'}}</h1>
   <div *ngFor="let animal of animals">
     <a routerLink="/animal/{{ animal.idAnimal }}">{{ animal.name }}</a>
   </div>

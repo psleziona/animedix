@@ -1,1 +1,24 @@
-<p>register works!</p>
+<h1>Rejestracja</h1>
+<form [formGroup]="registerForm" (submit)="register()">
+  <div>
+    <label for="forename">Imię</label>
+    <input type="text" id="forename" formControlName="forename">
+  </div>
+  <div>
+    <label for="surname">Nazwisko</label>
+    <input type="text" id="surname" formControlName="surname">
+  </div>
+  <div>
+    <label for="phone">Telefon</label>
+    <input type="text" id="phone" formControlName="phone">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="text" id="email" formControlName="email">
+  </div>
+  <div>
+    <label for="password">Hasło</label>
+    <input type="password" id="password" formControlName="password">
+  </div>
+  <button type="submit">Dodaj</button>
+</form>

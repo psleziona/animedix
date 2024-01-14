@@ -29,6 +29,6 @@ export class SurgeriesComponent {
       name: this.addSurgeryForm.value.name,
       price: this.addSurgeryForm.value.price
     }
-    this.surgeryService.addSurgery(surgery).subscribe();
+    this.surgeryService.addSurgery(surgery).subscribe(n => window.location.reload());
   }
 }

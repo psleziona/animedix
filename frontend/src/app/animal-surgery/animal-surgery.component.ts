@@ -72,7 +72,7 @@ export class AnimalSurgeryComponent {
         usedAssortment.volume = Number(v);
       }
 
-    this.animalSurgeryService.addAssortmentToSurgery(usedAssortment).subscribe();
+    this.animalSurgeryService.addAssortmentToSurgery(usedAssortment).subscribe(res => window.location.reload());
   }
 
 }

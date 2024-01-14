@@ -34,7 +34,6 @@ export class AnimalsComponent {
   ngOnInit() {
     this.animalService.getAnimals(0,10).subscribe({
       next: response => {
-        console.log(response);
         // @ts-ignore
         this.animals = response['content'];
         //@ts-ignore

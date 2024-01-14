@@ -12,12 +12,12 @@ import {AssortmentCategory} from "../_model/assortment-category";
 })
 export class AssortmentAddComponent {
   assortmentAddForm = new FormGroup({
-    name: new FormControl(''),
-    quantity: new FormControl(''),
-    volume: new FormControl(''),
-    unit: new FormControl(''),
-    type: new FormControl(''),
-    category: new FormControl('')
+    name: new FormControl(),
+    quantity: new FormControl(),
+    volume: new FormControl(),
+    unit: new FormControl(),
+    type: new FormControl(),
+    category: new FormControl()
   });
   selectedType = '';
 
@@ -36,7 +36,7 @@ export class AssortmentAddComponent {
       type: this.assortmentAddForm.value.type,
       category: this.assortmentAddForm.value.category
     }
-    this.assortmentService.addAssortment(assortment).subscribe();
+    this.assortmentService.addAssortment(assortment).subscribe(res => window.location.reload());
   }
 
   onTypeChange() {

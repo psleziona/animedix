@@ -12,7 +12,6 @@ import {AuthInterceptor} from "./_interceptor/auth.interceptor";
 import {AuthGuard} from "./_guard/auth.guard";
 import { AnimalsComponent } from './animals/animals.component';
 import { VisitsComponent } from './visits/visits.component';
-import { HomeComponent } from './home/home.component';
 import { AnimalComponent } from './animal/animal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from "@angular/material/datepicker";
@@ -33,9 +32,9 @@ import { AssortmentsComponent } from './assortments/assortments.component';
 import { AssortmentComponent } from './assortment/assortment.component';
 import { AssortmentAddComponent } from './assortment-add/assortment-add.component';
 import { ShiftsComponent } from './shifts/shifts.component';
-import { ShiftComponent } from './shift/shift.component';
 import { AnimalSurgeriesComponent } from './animal-surgeries/animal-surgeries.component';
 import { RegisterComponent } from './register/register.component';
+import { ClientComponent } from './client/client.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { RegisterComponent } from './register/register.component';
     MenuComponent,
     AnimalsComponent,
     VisitsComponent,
-    HomeComponent,
     AnimalComponent,
     EmployeesComponent,
     EmployeeComponent,
@@ -60,9 +58,9 @@ import { RegisterComponent } from './register/register.component';
     AssortmentComponent,
     AssortmentAddComponent,
     ShiftsComponent,
-    ShiftComponent,
     AnimalSurgeriesComponent,
-    RegisterComponent
+    RegisterComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,

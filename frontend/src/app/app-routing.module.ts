@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./login/login.component";
-import {HomeComponent} from "./home/home.component";
 import {AnimalsComponent} from "./animals/animals.component";
 import {VisitsComponent} from "./visits/visits.component";
 import {AuthGuard} from "./_guard/auth.guard";
@@ -14,7 +13,6 @@ import {AnimalSurgeryAddComponent} from "./animal-surgery-add/animal-surgery-add
 import {SurgeriesComponent} from "./surgeries/surgeries.component";
 import {SurgeryComponent} from "./surgery/surgery.component";
 import {ShiftsComponent} from "./shifts/shifts.component";
-import {ShiftComponent} from "./shift/shift.component";
 import {RegisterComponent} from "./register/register.component";
 import {AssortmentsComponent} from "./assortments/assortments.component";
 import {AssortmentComponent} from "./assortment/assortment.component";
@@ -22,12 +20,13 @@ import {AssortmentAddComponent} from "./assortment-add/assortment-add.component"
 import {EmployeesComponent} from "./employees/employees.component";
 import {EmployeeComponent} from "./employee/employee.component";
 import {EmployeeAddComponent} from "./employee-add/employee-add.component";
+import {ClientComponent} from "./client/client.component";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'animals', component: AnimalsComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: "/animals", pathMatch: "full" },
   { path: 'animal/:id', component: AnimalComponent, canActivate: [AuthGuard] },
   { path: 'visits', component: VisitsComponent, canActivate: [AuthGuard] },
   { path: 'visits/archive', component: VisitsComponent, canActivate: [AuthGuard] },
@@ -40,13 +39,15 @@ const routes: Routes = [
   { path: 'surgeries', component: SurgeriesComponent, canActivate: [AuthGuard] },
   { path: 'surgery/:id', component: SurgeryComponent, canActivate: [AuthGuard] },
   { path: 'shifts', component: ShiftsComponent, canActivate: [AuthGuard] },
-  { path: 'shift/:id', component: ShiftComponent, canActivate: [AuthGuard] },
+  { path: 'shifts/month/:month', component: ShiftsComponent, canActivate: [AuthGuard] },
+  { path: 'shifts/day/:day', component: ShiftsComponent, canActivate: [AuthGuard] },
   { path: 'assortments', component: AssortmentsComponent, canActivate: [AuthGuard] },
   { path: 'assortment/:id', component: AssortmentComponent, canActivate: [AuthGuard] },
   { path: 'assortmentAdd', component: AssortmentAddComponent, canActivate: [AuthGuard] },
   { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuard] },
   { path: 'employee/:id', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'employeeAdd', component: EmployeeAddComponent, canActivate: [AuthGuard] },
+  { path: 'client/:id', component: ClientComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

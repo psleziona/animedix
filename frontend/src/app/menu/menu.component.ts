@@ -10,6 +10,7 @@ import {StorageService} from "../_service/storage.service";
 export class MenuComponent {
   isAuth = false;
   userRole = '';
+  userId = 0;
 
   constructor(private storageService: StorageService) {}
 
@@ -18,6 +19,7 @@ export class MenuComponent {
     if(this.isAuth) {
       const user = this.storageService.getUser();
       this.userRole = user['role'];
+      this.userId = user['id'];
     }
 
     this.storageService.loggedIn.subscribe(v => {
@@ -25,6 +27,7 @@ export class MenuComponent {
         this.isAuth = true;
         const user = this.storageService.getUser();
         this.userRole = user['role'];
+        this.userId = user['id'];
       }
     });
   }
