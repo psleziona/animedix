@@ -1,23 +1,36 @@
 <div>
   <form *ngIf="role == 'CLIENT'" [formGroup]="animalForm" (submit)="addAnimal()">
-    <label for="name">Imię</label>
-    <input type="text" id="name" formControlName="name">
+    <div class="form-field">
+      <label for="name">Imię</label>
+      <input type="text" id="name" formControlName="name">
+    </div>
+    <div class="form-field">
+      <label for="dateOfBirth">Data urodzenia</label>
+      <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+    </div>
 
-    <label for="dateOfBirth">Data urodzenia</label>
-    <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
-
-
-    <label for="species">Gatunek</label>
-    <input type="text" id="species" formControlName="species">
-
-    <label for="breed">Rasa</label>
-    <input type="text" id="breed" formControlName="breed">
-
+    <div class="form-field">
+      <label for="species">Gatunek</label>
+      <input type="text" id="species" formControlName="species">
+    </div>
+    <div class="form-field">
+      <label for="breed">Rasa</label>
+      <input type="text" id="breed" formControlName="breed">
+    </div>
     <button type="submit">Dodaj zwierzę</button>
   </form>
-  <h1>{{ role == 'CLIENT' ? 'Twoje zwierzęta' : 'Baza zwierząt'}}</h1>
-  <div *ngFor="let animal of animals">
-    <a routerLink="/animal/{{ animal.idAnimal }}">{{ animal.name }}</a>
+  <div *ngIf="animals && animals.length > 0">
+    <h1>{{ role == 'CLIENT' ? 'Twoje zwierzęta:' : 'Baza zwierząt:'}}</h1>
+    <table class="animals-table">
+      <tr>
+        <th>ID Zwierzęcia</th>
+        <th>Nazwa Zwierzęcia</th>
+      </tr>
+      <tr *ngFor="let animal of animals">
+        <td>{{ animal.idAnimal }}</td>
+        <td><a routerLink="/animal/{{ animal.idAnimal }}">{{ animal.name }}</a></td>
+      </tr>
+    </table>
   </div>
 </div>
 

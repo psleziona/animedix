@@ -1,4 +1,4 @@
-<h1>Dostępne zabiegi</h1>
+<h1>Dostępne zabiegi:</h1>
 <form *ngIf="role == 'ADMIN'" [formGroup]="addSurgeryForm" (submit)="addSurgery()">
   <label for="name">Nazwa zabiegu</label>
   <input type="text" id="name" formControlName="name">

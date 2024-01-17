@@ -1,7 +1,22 @@
-<h1>Pracownicy</h1>
-<a routerLink="/employeeAdd"><button>Dodaj pracownika</button></a>
 <div>
-  <div *ngFor="let employee of employees$ | async">
-    <p><a routerLink="/employee/{{ employee.id }}">{{employee.forename}} {{employee.surname}}</a></p>
+  <div class="button-container">
+    <a routerLink="/employeeAdd"><button>Dodaj pracownika</button></a>
   </div>
+  <div class="employees-table" *ngIf="employees$ | async as employees">
+
+  <table *ngIf="employees.length > 0">
+    <thead>
+    <tr>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td><a routerLink="/employee/{{ employee.id }}">{{ employee.forename }}</a></td>
+      <td>{{ employee.surname }}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+

@@ -1,5 +1,8 @@
-<h1>Rejestracja</h1>
+<div class="form-container">
 <form [formGroup]="registerForm" (submit)="register()">
+  <div>
+    <label class="form-tittle">Rejestracja</label>
+  </div>
   <div>
     <label for="forename">Imię</label>
     <input type="text" id="forename" formControlName="forename">
@@ -22,3 +25,4 @@
   </div>
   <button type="submit">Dodaj</button>
 </form>
+</div>

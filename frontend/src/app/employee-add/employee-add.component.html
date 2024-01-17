@@ -1,6 +1,7 @@
-<h1>Formularz dodawania pracownika</h1>
-<form [formGroup]="employeeAddForm" (submit)="addEmployee()">
-  <div>
+<div>
+  <form [formGroup]="employeeAddForm" (submit)="addEmployee()">
+    <h1>Formularz dodawania pracownika</h1>
+    <div>
     <label for="forename">Imię</label>
     <input type="text" id="forename" formControlName="forename">
   </div>
@@ -29,12 +30,15 @@
     <input type="text" id="houseNumber" formControlName="houseNumber">
   </div>
   <div>
-    <label for="zipcode">Kod pocztowyę</label>
+    <label for="zipcode">Kod pocztowy</label>
     <input type="text" id="zipcode" formControlName="zipcode">
   </div>
   <div>
     <label for="city">Miasto</label>
     <input type="text" id="city" formControlName="city">
   </div>
-  <button type="submit">Dodaj</button>
+  <div class="button-container">
+    <button type="submit">Dodaj</button>
+  </div>
 </form>
+</div>

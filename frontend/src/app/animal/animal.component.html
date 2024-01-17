@@ -1,7 +1,22 @@
 <div *ngIf="animal$ | async as animal">
-  <p>Imię: {{ animal.name }}</p>
-  <p>Rasa: {{ animal.breed }}</p>
-  <p>Gatunek {{ animal.species }}</p>
-  <p>Wizyty: </p>
-  <p>Operacje: </p>
+  <table class="animal-table" >
+    <thead>
+    <tr>
+      <th>Imię</th>
+      <th>Rasa</th>
+      <th>Gatunek</th>
+      <th>Wizyty</th>
+      <th>Operacje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ animal.name }}</td>
+      <td>{{ animal.breed }}</td>
+      <td>{{ animal.species }}</td>
+      <td><!-- Tutaj informacje o wizytach --></td>
+      <td><!-- Tutaj informacje o operacjach --></td>
+    </tr>
+    </tbody>
+  </table>
 </div>

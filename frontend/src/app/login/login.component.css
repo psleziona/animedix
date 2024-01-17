@@ -1,0 +1,63 @@
+/* Stylowanie kontenera formularza */
+div {
+  display: flex;
+  justify-content: center; /* Wyśrodkowanie w poziomie */
+  align-items: center; /* Wyśrodkowanie w pionie */
+  height: 100vh; /* Pełna wysokość widoku */
+  background-color: #a0b29a; /* Tło kontenera */
+}
+
+
+label.form-tittle{
+  color: #050505;
+  font-size: 28px;
+  letter-spacing: 10px;
+  text-align: center;
+  margin-bottom: 50px;
+
+}
+/* Stylowanie samego formularza */
+form {
+  background: #f5f5f5;
+  padding: 50px; /* Zwiększony padding dla większego formularza */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+
+}
+
+/* Stylowanie etykiet */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+/* Stylowanie pól tekstowych */
+input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Stylowanie przycisku */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 1s;
+}
+
+/* Efekt hover dla przycisku */
+button:hover {
+  background-color: #0056b3;
+}
+

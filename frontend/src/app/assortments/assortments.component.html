@@ -1,7 +1,17 @@
-<h1>Dostępny asortyment</h1>
+<h1>Dostępny asortyment:</h1>
+
+<table class="assortments_table" *ngIf="assortments$ | async as assortments">
+  <thead>
+  <tr>
+    <th>Nazwa</th>
+    <th>Pozostało</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let a of assortments">
+    <td><a routerLink="/assortment/{{a.idAssortment}}">{{ a.name }}</a></td>
+    <td>{{ a.volume }}{{ a.quantity }} {{ a.unit }}</td>
+  </tr>
+  </tbody>
+</table>
 <a routerLink="/assortmentAdd"><button>Dodaj</button></a>
-<div *ngFor="let a of assortments$ | async">
-  <p><a routerLink="/assortment/{{a.idAssortment}}">Nazwa {{ a.name }}</a></p>
-  <p>Pozostało: {{ a.volume }}{{ a.quantity }} {{ a.unit }}</p>
-  <hr>
-</div>
