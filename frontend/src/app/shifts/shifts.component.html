@@ -22,11 +22,15 @@
   <table class="shifts_table" id="shifts">
     <tr>
       <th>Lista zmian</th>
-      <th *ngFor="let x of availableUsers">Pracownik</th>
+      <ng-container *ngIf="!userSelect.value">
+        <th *ngFor="let x of availableUsers">Pracownik</th>
+      </ng-container>
     </tr>
     <tr *ngFor="let s of showedShifts">
       <td>{{ s.shiftStart }} - {{ s.shiftEnd }}</td>
-      <td *ngFor="let e of s.employees">{{ e.forename }} {{ e.surname }}</td>
+      <ng-container *ngIf="!userSelect.value">
+        <td *ngFor="let e of s.employees">{{ e.forename }} {{ e.surname }}</td>
+      </ng-container>
     </tr>
   </table>
 </div>
