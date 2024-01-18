@@ -26,7 +26,7 @@ public class AnimalServiceImpl implements AnimalService {
     public Optional<Animal> getAnimal(Integer idAnimal) {
         User currentUser = authService.getSessionUser();
         Animal animal = animalRepository.findById(idAnimal).orElseThrow();
-        if(currentUser.getRole() == Role.DOCTOR || (currentUser.getRole() == Role.CLIENT && ((Client)currentUser).getAnimals().contains(animal)))
+        if(currentUser.getRole() == Role.DOCTOR || currentUser.getRole() == Role.ADMIN || (currentUser.getRole() == Role.CLIENT && ((Client)currentUser).getAnimals().contains(animal)))
             return animalRepository.findById(idAnimal);
         return Optional.of(null);
     }

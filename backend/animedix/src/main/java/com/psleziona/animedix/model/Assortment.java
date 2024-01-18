@@ -19,6 +19,8 @@ public class Assortment {
     private String name;
     private Double volume;
     private Integer quantity;
+    @NonNull
+    private Integer alertValue;
     private AssortmentUnit unit;
     private AssortmentType type;
     @NonNull
@@ -26,5 +28,4 @@ public class Assortment {
     @OneToMany(mappedBy = "assortment")
     @JsonIgnore
     private List<UsedAssortment> usedInSurgeries;
-
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +19,7 @@ public class Visit {
     @NonNull
     private LocalDateTime date;
     private String ownerComments;
+    @Nullable
     private String doctorComments;
     private Integer doctorRate;
     @ManyToOne
