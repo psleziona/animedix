@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AssortmentService} from "../_service/assortment.service";
 import {AssortmentUnit} from "../_model/assortment-unit";
@@ -25,7 +26,7 @@ export class AssortmentAddComponent {
   assortmentUnit = Object.keys(AssortmentUnit).filter(key => isNaN(Number(key)));
   assortmentCategory = Object.keys(AssortmentCategory).filter(key => isNaN(Number(key)));
 
-  constructor(private assortmentService: AssortmentService) {}
+  constructor(private assortmentService: AssortmentService, private router: Router) {}
 
   addAssortment() {
     const assortment = {
@@ -36,7 +37,7 @@ export class AssortmentAddComponent {
       type: this.assortmentAddForm.value.type,
       category: this.assortmentAddForm.value.category
     }
-    this.assortmentService.addAssortment(assortment).subscribe(res => window.location.reload());
+    this.assortmentService.addAssortment(assortment).subscribe(res=> this.router.navigateByUrl("/assortments"));
   }
 
   onTypeChange() {

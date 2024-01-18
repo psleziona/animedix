@@ -1,16 +1,40 @@
 <div>
-  <p>Zwierzę: {{ surgery?.animal?.name }}</p>
-  <p>Zabieg: {{ surgery?.surgery?.name }}</p>
+  <h1>Informacje dotyczące operacji:</h1>
+  <h2>Zwierzę: {{ surgery?.animal?.name }}</h2>
+  <h2>Rodzaj zwierzęcia: {{ surgery?.animal?.species }}</h2>
+  <h2>Rasa: {{ surgery?.animal?.breed }}</h2>
+  <h2>Zabieg: {{ surgery?.surgery?.name }}</h2>
 </div>
-<select [formControl]="selectedAssortment" (change)="onAssortmentSelected()">
-  <option value=""></option>
-  <option value="{{ assortment.idAssortment }}" *ngFor="let assortment of assortments">{{ assortment.name }}</option>
-</select>
-<input *ngIf="assortmentType != ''" [formControl]="usedQuantityAmount"> {{ unit }}
-<button *ngIf="assortmentType != ''" (click)="addAssortmentToSurgery()">Użyj</button>
+
+
+<form *ngIf="role == 'DOCTOR'">
+  <div class="form-field">
+    <label for="date">Użyty lek</label>
+    <select id="date" [formControl]="selectedAssortment" (change)="onAssortmentSelected()">
+      <option value=""></option>
+      <option *ngFor="let assortment of assortments" [value]="assortment.idAssortment">{{ assortment.name }}</option>
+    </select>
+  </div>
+  <div class="form-field">
+    <label for="unit">Jednostka</label>
+    <input id="unit" *ngIf="assortmentType != ''" [formControl]="usedQuantityAmount"> {{ unit }}
+  </div>
+  <div>
+    <button *ngIf="assortmentType != ''" (click)="addAssortmentToSurgery()">Użyj</button>
+  </div>
+</form>
 <div>
-  Użyty asortyment
-  <ul>
-    <li *ngFor="let used of surgery?.usedAssortment">{{ used.assortment?.name }} {{ used.quantity }} {{ used.amount }} {{ used.assortment?.unit }}</li>
-  </ul>
+  <h3>Użyty asortyment:</h3>
+  <table class="surgery-table">
+    <tr>
+      <th>Nazwa</th>
+      <th>Ilość</th>
+      <th>Jednostka</th>
+    </tr>
+    <tr *ngFor="let used of surgery?.usedAssortment">
+      <td>{{ used.assortment?.name }}</td>
+      <td>{{ used.quantity }}{{ used.amount }}</td>
+      <td>{{ used.assortment?.unit }}</td>
+    </tr>
+  </table>
 </div>

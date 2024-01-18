@@ -7,6 +7,8 @@ import {ActivatedRoute} from "@angular/router";
 import {FormControl} from "@angular/forms";
 import {AssortmentType} from "../_model/assortment-type";
 import {UsedAssortment} from "../_model/used-assortment";
+import {StorageService} from "../_service/storage.service";
+
 
 @Component({
   selector: 'app-animal-surgery',
@@ -21,10 +23,14 @@ export class AnimalSurgeryComponent {
   usedQuantityAmount = new FormControl('');
   assortmentType = '';
   unit = '';
+  role='';
 
   constructor(private animalSurgeryService: AnimalSurgeryService,
               private assortmentService : AssortmentService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+  private storageService: StorageService) {
+    this.role = storageService.getRole();
+  }
 
   ngOnInit() {
     const idSurgery = Number(this.route.snapshot.params['id'])

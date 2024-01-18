@@ -1,24 +1,33 @@
 
 <form [formGroup]="visitForm" (submit)="addVisit()">
-  <label for="animal">Zwierzę</label>
-  <select id="animal" formControlName="animal">
-    <option *ngFor="let animal of animals" value="{{ animal.idAnimal }}">{{ animal.name }}</option>
-  </select>
+  <div class="form-field">
+    <label for="animal">Zwierzę</label>
+    <select id="animal" formControlName="animal">
+      <option *ngFor="let animal of animals" value="{{ animal.idAnimal }}">{{ animal.name }}</option>
+    </select>
+  </div>
+  <div class="form-field">
+    <label for="ownerComments">Uwagi</label>
+    <textarea id="ownerComments" formControlName="ownerComments"></textarea>
+  </div>
 
-  <label for="ownerComments">Uwagi</label>
-  <textarea id="ownerComments" formControlName="ownerComments"></textarea>
+  <div class="form-field">
+    <label for="doctor">Lekarz</label>
+    <select id="doctor" formControlName="doctor" (change)="getDoctorVisitTerm()">
+      <option value=""></option>
+      <option *ngFor="let doctor of availableTerms" value="{{ doctor.doctor.id }}">{{ doctor.doctor.forename }}</option>
+    </select>
+  </div>
 
-  <label for="doctor">Lekarz</label>
-  <select id="doctor" formControlName="doctor" (change)="getDoctorVisitTerm()">
-    <option value=""></option>
-    <option *ngFor="let doctor of availableTerms" value="{{ doctor.doctor.id }}">{{ doctor.doctor.forename }}</option>
-  </select>
-
-  <label for="date">Termin</label>
-  <select id="date" formControlName="date">
-    <option *ngFor="let term of terms | async" value="{{ term }}">{{ term }}</option>
-  </select>
-  <button type="submit">Umów wizytę</button>
+  <div class="form-field">
+    <label for="date">Termin</label>
+    <select id="date" formControlName="date">
+      <option *ngFor="let term of terms | async" value="{{ term }}">{{ term }}</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Umów wizytę</button>
+  </div>
 </form>
 <h3>Wybierz termin:</h3>
 <form [formGroup]="availableTermForm" (submit)="onSetVisitTerm()">

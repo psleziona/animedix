@@ -17,7 +17,9 @@
       <label for="breed">Rasa</label>
       <input type="text" id="breed" formControlName="breed">
     </div>
-    <button type="submit">Dodaj zwierzę</button>
+    <div>
+     <button type="submit">Dodaj zwierzę</button>
+    </div>
   </form>
   <div *ngIf="animals && animals.length > 0">
     <h1>{{ role == 'CLIENT' ? 'Twoje zwierzęta:' : 'Baza zwierząt:'}}</h1>
