@@ -32,12 +32,14 @@ public class VisitServiceImpl implements VisitService {
             var visits = animalRepository.getAnimalsByOwnerId(currentUser.getId())
                     .stream().map(Animal::getVisits)
                     .flatMap(v -> v.stream().filter(visit -> visit.getDate().isAfter(LocalDateTime.now())))
+                    .sorted((o1, o2) -> o1.getDate().isBefore(o2.getDate()) ? -1 : 1)
                     .toList();
             return new PageImpl<>(visits);
             }
         var visits = ((Employee)currentUser).getVisits()
                 .stream()
                 .filter(visit -> visit.getDate().isAfter(LocalDateTime.now()))
+                .sorted((o1, o2) -> o1.getDate().isBefore(o2.getDate()) ? -1 : 1)
                 .toList();
         return new PageImpl<>(visits);
     }
@@ -49,14 +51,17 @@ public class VisitServiceImpl implements VisitService {
             var visits = animalRepository.getAnimalsByOwnerId(currentUser.getId())
                     .stream().map(Animal::getVisits)
                     .flatMap(v -> v.stream().filter(visit -> visit.getDate().isBefore(LocalDateTime.now())))
+                    .sorted((o1, o2) -> o1.getDate().isBefore(o2.getDate()) ? -1 : 1)
                     .toList();
             return new PageImpl<>(visits);
         }
         var visits = ((Employee)currentUser).getVisits()
                 .stream()
                 .filter(visit -> visit.getDate().isBefore(LocalDateTime.now()))
+                .sorted((o1, o2) -> o1.getDate().isBefore(o2.getDate()) ? -1 : 1)
                 .toList();
         return new PageImpl<>(visits);
+        //dodać wszystkie wizytyt dla admina, tak jak i operacje
     }
 
     @Override
@@ -69,7 +74,7 @@ public class VisitServiceImpl implements VisitService {
                     .map(Animal::getVisits)
                     .flatMap(Collection::stream)
                     .filter(v -> v.getDate().plusMinutes(30).isAfter(LocalDateTime.now()))
-                    .sorted()
+                    .sorted((o1, o2) -> o1.getDate().isBefore(o2.getDate()) ? -1 : 1)
                     .findFirst();
         }
         return ((Employee)currentUser).getVisits()

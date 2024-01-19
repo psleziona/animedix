@@ -2,6 +2,7 @@ package com.psleziona.animedix.controller;
 
 import com.psleziona.animedix.model.Animal;
 import com.psleziona.animedix.model.Client;
+import com.psleziona.animedix.model.Visit;
 import com.psleziona.animedix.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,6 +30,11 @@ public class ClientController {
     @GetMapping("/clients/{idClient}")
     ResponseEntity<Client> getClient(@PathVariable Integer idClient) {
         return ResponseEntity.of(clientService.getClient(idClient));
+    }
+
+    @GetMapping("/clients/{idClient}/visits")
+    List<Visit> getClientVisits(@PathVariable Integer idClient) {
+        return clientService.getClientVisits(idClient);
     }
 
     @GetMapping("/clients/{idClient}/animals")

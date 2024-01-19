@@ -1,11 +1,14 @@
 package com.psleziona.animedix.service;
 
+import com.psleziona.animedix.auth.AuthService;
 import com.psleziona.animedix.model.Animal;
 import com.psleziona.animedix.model.Client;
+import com.psleziona.animedix.model.Visit;
 import com.psleziona.animedix.repository.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +48,11 @@ public class ClientServiceImpl implements ClientService{
     @Override
     public void deleteClient(Integer idClient) {
         clientRepository.deleteById(idClient);
+    }
+
+    @Override
+    public List<Visit> getClientVisits(Integer idClient) {
+        return clientRepository.findById(idClient).get().getAnimals()
+                .stream().flatMap(a -> a.getVisits().stream()).toList();
     }
 }

@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthService {
     private final ClientService clientService;
-    private final EmployeeService employeeService;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -68,5 +67,11 @@ public class AuthService {
 
     private String getSessionToken() {
         return httpServletRequest.getHeader("Authorization");
+    }
+
+    public void changePassword(String password) {
+        Client user = (Client)getSessionUser();
+        user.setPassword(passwordEncoder.encode(password));
+        clientService.setClient(user);
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -37,6 +38,12 @@ public class ShiftController {
     @GetMapping("/shifts/month/{date}")
     List<Shift> getShiftsByMonth(@PathVariable @DateTimeFormat(pattern = "yyyy-MM") LocalDate date) {
         return shiftService.getShiftsByMonth(date);
+    }
+
+    @PostMapping("/shifts/generate")
+    ResponseEntity<Void> generateShifts(@RequestBody Map<String, String> shiftInfos) {
+        shiftService.generateShifts(shiftInfos);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/shifts")

@@ -30,6 +30,17 @@ public class AssortmentController {
         return assortmentService.getAssortments();
     }
 
+    @GetMapping("/assortments/critical")
+    List<Assortment> getAssortmentsCritical() {
+        return assortmentService.getAssortmentsCritical();
+    }
+
+    @GetMapping("/assortments/fill/{idAssortment}/{quantity}")
+    ResponseEntity<Void> fillAssortment(@PathVariable Integer idAssortment, @PathVariable Double quantity) {
+        assortmentService.fillAssortment(idAssortment, quantity);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @PostMapping("/assortments")
     ResponseEntity<Void> setAssortment(@RequestBody Assortment assortment) {
         Assortment createdAssortment = assortmentService.setAssortment(assortment);

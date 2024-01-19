@@ -26,4 +26,10 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         return ResponseEntity.ok(authService.authenticate(request));
     }
+
+    @PostMapping("/passwordChange")
+    public ResponseEntity<Void> changePassword(@RequestBody AuthRequest request) {
+        authService.changePassword(request.getPassword());
+        return ResponseEntity.ok().build();
+    }
 }

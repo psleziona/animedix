@@ -2,6 +2,7 @@ package com.psleziona.animedix.controller;
 
 
 import com.psleziona.animedix.model.AnimalSurgery;
+import com.psleziona.animedix.model.AnimalSurgeryAppointment;
 import com.psleziona.animedix.model.UsedAssortment;
 import com.psleziona.animedix.model.UsedAssortmentRequest;
 import com.psleziona.animedix.service.AnimalSurgeryService;
@@ -75,7 +76,7 @@ public class AnimalSurgeryController {
     }
 
     @PostMapping("/animalSurgeries")
-    ResponseEntity<Void> setAnimalSurgery(@RequestBody AnimalSurgery animalSurgery) {
+    ResponseEntity<Void> setAnimalSurgery(@RequestBody AnimalSurgeryAppointment animalSurgery) {
         AnimalSurgery createdAnimalSurgery = animalSurgeryService.setSurgery(animalSurgery);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idSurgery}")
                 .buildAndExpand(createdAnimalSurgery.getIdAnimalSurgery()).toUri();

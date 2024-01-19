@@ -9,7 +9,9 @@ import java.util.Optional;
 public interface AssortmentService {
     Optional<Assortment> getAssortment(Integer idAssortment);
     List<Assortment> getAssortments();
+    List<Assortment> getAssortmentsCritical();
     List<Assortment> getAssortmentsToOrder();
     Assortment setAssortment(Assortment assortment);
     void deleteAssortment(Integer idAssortment);
+    void fillAssortment(Integer idAssortment, Double quantity);
 }
