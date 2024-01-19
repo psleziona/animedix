@@ -35,6 +35,7 @@ import { ShiftsComponent } from './shifts/shifts.component';
 import { AnimalSurgeriesComponent } from './animal-surgeries/animal-surgeries.component';
 import { RegisterComponent } from './register/register.component';
 import { ClientComponent } from './client/client.component';
+import { ShiftGeneratorComponent } from './shift-generator/shift-generator.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ClientComponent } from './client/client.component';
     ShiftsComponent,
     AnimalSurgeriesComponent,
     RegisterComponent,
-    ClientComponent
+    ClientComponent,
+    ShiftGeneratorComponent
   ],
   imports: [
     BrowserModule,

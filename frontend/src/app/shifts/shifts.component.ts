@@ -75,12 +75,12 @@ export class ShiftsComponent {
   }
 
   onUserSelected() {
+
     const id = this.userSelect.value;
     if(id == '')
       this.showedShifts = this.shifts;
     else
-      this.showedShifts = this.availableUsers?.filter(u => u.id == id)
-        .flatMap(u => u['shifts']).sort((a,b) => a.shiftStart < b.shiftStart ? -1 : 1);
+      this.showedShifts = this.shifts?.filter(s => s.employees.map(e => e.id).includes(parseInt(id)));
   }
-
 }
+

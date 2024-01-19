@@ -1,2 +1,6 @@
-<p>assortment works!</p>
-
+<div>
+  <p>{{ assortment?.name }}</p>
+  <p>{{ assortment?.quantity }} {{ assortment?.volume }} {{ assortment?.unit }}</p>
+  <input *ngIf="role == 'ADMIN'" type="number" [formControl]="quantity">
+  <button *ngIf="role == 'ADMIN'" (click)="fillAssortment()">Uzupełnij</button>
+</div>

@@ -1,3 +1,17 @@
+<h3>Wybierz termin:</h3>
+<form [formGroup]="availableTermForm" (submit)="onSetVisitTerm()">
+  <input type="date" formControlName="dayFrom">
+
+  <input type="date" formControlName="dayTo">
+  <select id="rangeStart" formControlName="hourFrom">
+    <option *ngFor="let h of visitHours" value="{{ h }}">{{ h }}</option>
+  </select>
+
+  <select id="rangeEnd" formControlName="hourTo">
+    <option *ngFor="let h of visitHours" value="{{ h }}">{{ h }}</option>
+  </select>
+  <button type="submit">Pokaż dostępne terminy</button>
+</form>
 
 <form [formGroup]="visitForm" (submit)="addVisit()">
   <div class="form-field">
@@ -25,31 +39,11 @@
       <option *ngFor="let term of terms | async" value="{{ term }}">{{ term }}</option>
     </select>
   </div>
+
   <div>
     <button type="submit">Umów wizytę</button>
   </div>
 </form>
-<h3>Wybierz termin:</h3>
-<form [formGroup]="availableTermForm" (submit)="onSetVisitTerm()">
-  <input type="date" formControlName="dayFrom">
 
-  <input type="date" formControlName="dayTo">
-  <select id="rangeStart" formControlName="hourFrom">
-    <option *ngFor="let h of visitHours" value="{{ h }}">{{ h }}</option>
-  </select>
-
-  <select id="rangeEnd" formControlName="hourTo">
-    <option *ngFor="let h of visitHours" value="{{ h }}">{{ h }}</option>
-  </select>
-  <button type="submit">Pokaż dostępne terminy</button>
-
-
-</form>
-
-<div *ngFor="let doctor of availableTerms">
-  <label for="doctor">Lekarz</label>
-  <input type="radio" id="doctor{{doctor.doctor.id}}" name="doctor" formControlName="doctor" value="{{doctor.doctor.id}}" (change)="getDoctorVisitTerm()">
-  <label for="doctor{{doctor.doctor.id}}">{{ doctor.doctor.forename }}</label>
-</div>
 
 

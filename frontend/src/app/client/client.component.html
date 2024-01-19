@@ -1,2 +1,16 @@
-<h1>client works!</h1>
-<p>historia itp?</p>
+<div>
+  <label for="password">Nowe hasło</label>
+  <input type="password" id="password" [formControl]="password">
+  <button (click)="changePassword()">Zmień</button>
+</div>
+<div>
+  <p>Imię: {{ client?.forename }}</p>
+  <p>Nazwisko: {{ client?.surname }}</p>
+  <p>Email: {{ client?.email }}</p>
+</div>
+<div>
+  Wizyty:
+  <p *ngFor="let v of visits$ | async">
+    <a routerLink="/visit/{{ v.idVisit }}">{{ v.date }} {{ v.animal.name }}</a>
+  </p>
+</div>

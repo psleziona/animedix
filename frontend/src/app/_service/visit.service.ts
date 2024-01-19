@@ -41,8 +41,4 @@ export class VisitService {
     return this.http.put(this.visitUrl + `/${visit.idVisit}`, visit);
   }
 
-  addLeadingZeros(num:number) {
-    return num < 10 ? `0${num}` : num;
-  }
-
 }

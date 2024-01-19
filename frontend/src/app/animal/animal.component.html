@@ -14,8 +14,8 @@
       <td>{{ animal.name }}</td>
       <td>{{ animal.breed }}</td>
       <td>{{ animal.species }}</td>
-      <td><!-- Tutaj informacje o wizytach --></td>
-      <td><!-- Tutaj informacje o operacjach --></td>
+      <td><p *ngFor="let v of animal.visits"><a routerLink="/visit/{{v.idVisit}}">{{v.date}}</a></p></td>
+      <td><p *ngFor="let s of animal.surgeries"><a routerLink="/animalSurgery/{{s.idAnimalSurgery}}">{{s.date}}</a></p></td>
     </tr>
     </tbody>
   </table>

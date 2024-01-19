@@ -13,8 +13,20 @@ export class AssortmentService {
     return this.http.get<Assortment[]>(this.url);
   }
 
+  getAssortmentById(id: number) {
+    return this.http.get<Assortment>(this.url + "/" + id);
+  }
+
+  getAssortmentCritical() {
+    return this.http.get<Assortment[]>(this.url + "/critical");
+  }
+
   addAssortment(assortment: any) {
     return this.http.post(this.url, assortment);
+  }
+
+  fillAssortment(idAssortment: number, value : number) {
+    return this.http.get(this.url + `/fill/${idAssortment}/${value}`);
   }
 
 }

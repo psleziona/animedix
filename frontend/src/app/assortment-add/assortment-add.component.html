@@ -32,5 +32,9 @@
       <option *ngFor="let c of assortmentCategory" value="{{ c }}">{{ c }}</option>
     </select>
   </div>
+  <div class="form-field">
+    <label for="critical">Stan krytyczny</label>
+    <input type="number" id="critical" formControlName="alertValue">
+  </div>
   <button type="submit">Dodaj</button>
 </form>

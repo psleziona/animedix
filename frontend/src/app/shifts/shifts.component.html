@@ -1,3 +1,4 @@
+<a routerLink="/shifts/generate"><button>Generuj grafik</button></a>
 <form>
   <div class="form-field">
     <label>Wybierz miesiąc</label>
@@ -21,16 +22,14 @@
 <div *ngIf="showedShifts && showedShifts.length > 0">
   <table class="shifts_table" id="shifts">
     <tr>
-      <th>Lista zmian</th>
-      <ng-container *ngIf="!userSelect.value">
-        <th *ngFor="let x of availableUsers">Pracownik</th>
-      </ng-container>
+      <th>Zmiana</th>
+      <th  *ngIf="!userSelect.value">Pracownicy</th>
     </tr>
-    <tr *ngFor="let s of showedShifts">
-      <td>{{ s.shiftStart }} - {{ s.shiftEnd }}</td>
-      <ng-container *ngIf="!userSelect.value">
-        <td *ngFor="let e of s.employees">{{ e.forename }} {{ e.surname }}</td>
-      </ng-container>
-    </tr>
+    <ng-container *ngFor="let s of showedShifts">
+      <tr *ngFor="let e of s.employees; index as i">
+        <td [rowSpan]="s.employees.length" *ngIf="i == 0">{{ s.shiftStart }} - {{ s.shiftEnd }}</td>
+        <td *ngIf="!userSelect.value">{{ e.forename }} {{ e.surname }}</td>
+      </tr>
+    </ng-container>
   </table>
 </div>

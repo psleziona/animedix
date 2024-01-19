@@ -7,6 +7,7 @@ export interface Assortment {
   name: string,
   quantity: number,
   volume: number,
+  alertValue: number,
   unit: AssortmentUnit,
   type: AssortmentType,
   category: AssortmentCategory,

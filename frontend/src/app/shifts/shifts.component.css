@@ -49,7 +49,7 @@ h1{
 .shifts_table {
   width: 80%;
   border-collapse: collapse;
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;

@@ -21,6 +21,7 @@ import {EmployeesComponent} from "./employees/employees.component";
 import {EmployeeComponent} from "./employee/employee.component";
 import {EmployeeAddComponent} from "./employee-add/employee-add.component";
 import {ClientComponent} from "./client/client.component";
+import {ShiftGeneratorComponent} from "./shift-generator/shift-generator.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,7 +42,9 @@ const routes: Routes = [
   { path: 'shifts', component: ShiftsComponent, canActivate: [AuthGuard] },
   { path: 'shifts/month/:month', component: ShiftsComponent, canActivate: [AuthGuard] },
   { path: 'shifts/day/:day', component: ShiftsComponent, canActivate: [AuthGuard] },
+  { path: 'shifts/generate', component: ShiftGeneratorComponent, canActivate: [AuthGuard] },
   { path: 'assortments', component: AssortmentsComponent, canActivate: [AuthGuard] },
+  { path: 'assortments/critical', component: AssortmentsComponent, canActivate: [AuthGuard] },
   { path: 'assortment/:id', component: AssortmentComponent, canActivate: [AuthGuard] },
   { path: 'assortmentAdd', component: AssortmentAddComponent, canActivate: [AuthGuard] },
   { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuard] },

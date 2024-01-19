@@ -2,7 +2,7 @@
 <p>Data wizyty: {{ visit?.date }}</p>
 <p>Informacje klienta {{ visit?.ownerComments }}</p>
 <p *ngIf="visit?.doctorComments != null">Informacje od lekarza: {{ visit?.doctorComments }}</p>
-<p *ngIf="role == 'ADMIN'">Ocena wizyty: {{ visit?.doctorRate }}</p>
+<p *ngIf="role == 'ADMIN' || role == 'CLIENT'">Ocena wizyty: {{ visit?.doctorRate }}</p>
 <div *ngIf="role == 'DOCTOR' && isPossibleToAddDoctorComments">
   <label for="doctorNote">Notatka po wizycie</label>
   <textarea id="doctorNote" [formControl]="doctorNote"></textarea>

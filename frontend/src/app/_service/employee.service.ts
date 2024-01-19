@@ -10,7 +10,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getEmployee(id: number) {
-
+    return this.http.get<Employee>(this.employeeUrl + "/" + id);
   }
 
   getEmployees() {

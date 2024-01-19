@@ -1,5 +1,6 @@
 <h1>Dostępny asortyment:</h1>
-
+<a *ngIf="role == 'ADMIN'" routerLink="/assortmentAdd"><button>Dodaj</button></a>
+<a *ngIf="role == 'ADMIN'" routerLink="/assortments/critical"><button>Pokaż poziomy krytyczne</button></a>
 <table class="assortments_table" *ngIf="assortments$ | async as assortments">
   <thead>
   <tr>
@@ -10,8 +11,8 @@
   <tbody>
   <tr *ngFor="let a of assortments">
     <td><a routerLink="/assortment/{{a.idAssortment}}">{{ a.name }}</a></td>
-    <td>{{ a.volume }}{{ a.quantity }} {{ a.unit }}</td>
+    <td>{{ a.volume }}{{ a.quantity }} {{ a.unit || 'sztuk' }}</td>
   </tr>
   </tbody>
 </table>
-<a routerLink="/assortmentAdd"><button>Dodaj</button></a>
+

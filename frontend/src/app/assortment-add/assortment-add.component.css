@@ -2,7 +2,7 @@
 form {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 20px;
   background: #f5f5f5;
   padding: 30px;

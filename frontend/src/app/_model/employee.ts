@@ -1,3 +1,6 @@
+import {AnimalSurgery} from "./animal-surgery";
+import {Visit} from "./visit";
+
 export interface Employee {
   id? : number,
   forename: string,
@@ -8,5 +11,7 @@ export interface Employee {
   street: string,
   houseNumber: number,
   zipcode: string,
-  city: string
+  city: string,
+  surgeries? : AnimalSurgery[],
+  visits? : Visit[]
 }

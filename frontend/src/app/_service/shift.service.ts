@@ -20,4 +20,8 @@ export class ShiftService {
   addShift(shift : any) {
     return this.http.post(this.url, shift);
   }
+
+  generateShifts(shift : object) {
+    return this.http.post(this.url + "/generate", shift);
+  }
 }

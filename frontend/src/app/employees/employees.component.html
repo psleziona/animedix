@@ -1,4 +1,7 @@
 <div>
+  <div class="button-container">
+    <a routerLink="/employeeAdd"><button>Dodaj pracownika</button></a>
+  </div>
   <div  *ngIf="employees$ | async as employees">
 
   <table class="employees-table" *ngIf="employees.length > 0">
@@ -16,7 +19,4 @@
     </tbody>
   </table>
 </div>
-  <div class="button-container">
-    <a routerLink="/employeeAdd"><button>Dodaj pracownika</button></a>
-  </div>
 </div>

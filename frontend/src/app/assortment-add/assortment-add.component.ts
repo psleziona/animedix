@@ -18,7 +18,8 @@ export class AssortmentAddComponent {
     volume: new FormControl(),
     unit: new FormControl(),
     type: new FormControl(),
-    category: new FormControl()
+    category: new FormControl(),
+    alertValue: new FormControl()
   });
   selectedType = '';
 
@@ -35,7 +36,8 @@ export class AssortmentAddComponent {
       volume: this.assortmentAddForm.value.volume,
       unit: this.assortmentAddForm.value.unit,
       type: this.assortmentAddForm.value.type,
-      category: this.assortmentAddForm.value.category
+      category: this.assortmentAddForm.value.category,
+      alertValue: this.assortmentAddForm.value.alertValue
     }
     this.assortmentService.addAssortment(assortment).subscribe(res=> this.router.navigateByUrl("/assortments"));
   }
