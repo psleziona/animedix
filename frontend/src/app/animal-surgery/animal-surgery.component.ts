@@ -5,8 +5,6 @@ import {AssortmentService} from "../_service/assortment.service";
 import {Assortment} from "../_model/assortment";
 import {ActivatedRoute} from "@angular/router";
 import {FormControl} from "@angular/forms";
-import {AssortmentType} from "../_model/assortment-type";
-import {UsedAssortment} from "../_model/used-assortment";
 import {StorageService} from "../_service/storage.service";
 
 

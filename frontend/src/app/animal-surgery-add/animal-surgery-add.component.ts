@@ -53,16 +53,15 @@ export class AnimalSurgeryAddComponent {
   }
 
   setSurgery() {
-    const surgery = this.surgeries?.filter(s => s.idSurgery == Number(this.selectedSurgery.value))[0];
     const date = this.surgeryDate.value ?? '';
-    const animalSurgery : AnimalSurgery = {
-      animal: this.animal,
-      doctor: this.storageService.getUser(),
+    const animalSurgery = {
+      idAnimal: this.animal?.idAnimal,
+      idDoctor: this.storageService.getUser().id,
       date: date,
-      surgery: surgery,
+      idSurgery: Number(this.selectedSurgery.value)
     }
     this.animalSurgeryService.setAnimalSurgery(animalSurgery).subscribe(
-      next => this.router.navigateByUrl('/visits')
+      next => this.router.navigateByUrl('/animalSurgeries')
     );
   }
 

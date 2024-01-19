@@ -27,7 +27,7 @@ export class AnimalSurgeryService {
     return this.http.get<AnimalSurgery>(this.url + "/current");
   }
 
-  setAnimalSurgery(surgery: AnimalSurgery) {
+  setAnimalSurgery(surgery: any) {
     return this.http.post(this.url, surgery);
   }
 
