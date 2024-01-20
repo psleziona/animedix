@@ -20,7 +20,6 @@ public class Employee extends User {
     private String zipcode;
     @NonNull
     private String city;
-    @NonNull
     private JobRole jobRole;
     @ManyToMany(mappedBy = "employees")
     @JsonIgnoreProperties({"employees"})
