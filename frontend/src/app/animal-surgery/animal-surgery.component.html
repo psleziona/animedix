@@ -1,12 +1,24 @@
 <div>
   <h1>Informacje dotyczące operacji:</h1>
-  <h2>Zwierzę: {{ surgery?.animal?.name }}</h2>
-  <h2>Rodzaj zwierzęcia: {{ surgery?.animal?.species }}</h2>
-  <h2>Rasa: {{ surgery?.animal?.breed }}</h2>
-  <h2>Zabieg: {{ surgery?.surgery?.name }}</h2>
+  <table class="infoTable">
+    <tr>
+      <th>Zwierzę</th>
+      <td>{{ surgery?.animal?.name }}</td>
+    </tr>
+    <tr>
+      <th>Rodzaj zwierzęcia</th>
+      <td>{{ surgery?.animal?.species }}</td>
+    </tr>
+    <tr>
+      <th>Rasa</th>
+      <td>{{ surgery?.animal?.breed }}</td>
+    </tr>
+    <tr>
+      <th>Zabieg</th>
+      <td>{{ surgery?.surgery?.name }}</td>
+    </tr>
+  </table>
 </div>
-
-
 <form *ngIf="role == 'DOCTOR'">
   <div class="form-field">
     <label for="date">Użyty lek</label>

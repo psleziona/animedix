@@ -1,7 +1,11 @@
-<p>Dla każdego pracownika podaj liczbę godzin</p>
-<label for="date">Miesiąc</label>
-<input type="month" [formControl]="date" id="date">
-<div *ngFor="let e of employees">
+<h1>Dla każdego pracownika podaj liczbę godzin</h1>
+<form>
+<div class="form-field">
+  <label for="date">Miesiąc</label>
+  <input type="month" [formControl]="date" id="date">
+</div>
+<div class="form-field" *ngFor="let e of employees">
   {{ e.forename }} {{ e.surname }}<input type="number" id="employee{{e.id}}">
 </div>
 <button (click)="generateShifts()">Generuj</button>
+</form>

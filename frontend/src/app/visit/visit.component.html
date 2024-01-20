@@ -1,22 +1,45 @@
-<p>Zwierzę: {{ visit?.animal?.name ?? ''}}</p>
-<p>Data wizyty: {{ visit?.date }}</p>
-<p>Informacje klienta {{ visit?.ownerComments }}</p>
-<p *ngIf="visit?.doctorComments != null">Informacje od lekarza: {{ visit?.doctorComments }}</p>
-<p *ngIf="role == 'ADMIN' || role == 'CLIENT'">Ocena wizyty: {{ visit?.doctorRate }}</p>
-<div *ngIf="role == 'DOCTOR' && isPossibleToAddDoctorComments">
-  <label for="doctorNote">Notatka po wizycie</label>
-  <textarea id="doctorNote" [formControl]="doctorNote"></textarea>
-  <button (click)="addDoctorNote()">Dodaj notatkę</button>
-</div>
+<table class="visit-table">
+  <tr>
+    <th>Zwierzę</th>
+    <td>{{ visit?.animal?.name ?? ''}}</td>
+  </tr>
+  <tr>
+    <th>Data wizyty</th>
+    <td>{{ visit?.date }}</td>
+  </tr>
+  <tr>
+    <th>Informacje klienta</th>
+    <td>{{ visit?.ownerComments }}</td>
+  </tr>
+  <tr *ngIf="visit?.doctorComments != null">
+    <th>Informacje od lekarza</th>
+    <td>{{ visit?.doctorComments }}</td>
+  </tr>
+  <tr *ngIf="role == 'ADMIN' || role == 'CLIENT'">
+    <th>Ocena wizyty</th>
+    <td>{{ visit?.doctorRate }}</td>
+  </tr>
+</table>
+<form class="addCommentForm" *ngIf="role == 'DOCTOR' && isPossibleToAddDoctorComments">
+  <div class="form-field" >
+    <label for="doctorNote">Notatka po wizycie</label>
+    <textarea id="doctorNote" [formControl]="doctorNote"></textarea>
+    <button (click)="addDoctorNote()">Dodaj notatkę</button>
+  </div>
+</form>
 <div *ngIf="role == 'DOCTOR'">
-  <a routerLink="/animalSurgery/add/{{ visit?.animal?.idAnimal }}">Umów zabieg</a>
+  <button routerLink="/animalSurgery/add/{{ visit?.animal?.idAnimal }}">Umów zabieg</button>
 </div>
 <div *ngIf="role == 'CLIENT' && isPossibleToRate">
-  <label for="rate">Ocena wizyty</label>
-  <select name="rate" id="rate" [formControl]="doctorRate">
-    <option *ngFor="let rate of rates" value="{{ rate }}">{{ rate }}</option>
-  </select>
+ <form class="rateForm">
+   <div class="form-field">
+    <label for="rate">Ocena wizyty</label>
+    <select name="rate" id="rate" [formControl]="doctorRate">
+      <option *ngFor="let rate of rates" value="{{ rate }}">{{ rate }}</option>
+    </select>
+   </div>
   <button (click)="rateVisit()">Oceń wizytę</button>
+ </form>
 </div>
 
 

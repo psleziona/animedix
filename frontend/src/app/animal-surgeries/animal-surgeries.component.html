@@ -1,15 +1,35 @@
 <div>
-  <p *ngIf="!isArchive"><a routerLink="/animalSurgeries/archive">Archiwum</a></p>
+  <p *ngIf="!isArchive"><a id="archBtn" routerLink="/animalSurgeries/archive">Archiwum</a></p>
+
   <div *ngIf="currentSurgery && !isArchive">
     <h2>Najbliższy/obecny zabieg</h2>
-    <p><a routerLink="/animalSurgery/{{ currentSurgery.idAnimalSurgery }}">
-      Zwierzę {{ currentSurgery.animal?.name }} Termin: {{ currentSurgery.date }} Zabieg: {{ currentSurgery.surgery?.name }}</a></p>
+    <table class="animal_surgeries_table">
+      <tr>
+        <th>Zwierzę</th>
+        <th>Termin</th>
+        <th>Zabieg</th>
+      </tr>
+      <tr>
+        <td>{{ currentSurgery.animal?.name }}</td>
+        <td>{{ currentSurgery.date }}</td>
+        <td>{{ currentSurgery.surgery?.name }}</td>
+      </tr>
+    </table>
   </div>
+
   <div *ngIf="animalSurgeries && animalSurgeries.length > 0">
     <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} zabiegi:</h1>
-    <div *ngFor="let surgery of animalSurgeries">
-      <p><a routerLink="/animalSurgery/{{ surgery.idAnimalSurgery }}">
-        Zwierzę {{ surgery.animal?.name }} Termin: {{ surgery.date }} Zabieg: {{ surgery.surgery?.name }}</a></p>
-    </div>
+    <table class="animal_surgeries_table">
+      <tr>
+        <th>Zwierzę</th>
+        <th>Termin</th>
+        <th>Zabieg</th>
+      </tr>
+      <tr *ngFor="let surgery of animalSurgeries">
+        <td><a routerLink="/animalSurgery/{{ surgery.idAnimalSurgery }}">{{ surgery.animal?.name }}</a></td>
+        <td>{{ surgery.date }}</td>
+        <td>{{ surgery.surgery?.name }}</td>
+      </tr>
+    </table>
   </div>
 </div>

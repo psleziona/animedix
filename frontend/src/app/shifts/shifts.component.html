@@ -1,4 +1,4 @@
-<a routerLink="/shifts/generate"><button>Generuj grafik</button></a>
+<a routerLink="/shifts/generate"><button id="btn1">Generuj grafik</button></a>
 <form>
   <div class="form-field">
     <label>Wybierz miesiąc</label>
@@ -17,7 +17,7 @@
     </select>
   </div>
 
-  <button (click)="getExcel()">Pobierz</button>
+  <button id="downloadButton" (click)="getExcel()">Pobierz</button>
 </form>
 <div *ngIf="showedShifts && showedShifts.length > 0">
   <table class="shifts_table" id="shifts">

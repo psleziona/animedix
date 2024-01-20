@@ -1,14 +1,46 @@
 <h1>Profil pracownika</h1>
-<p>Imię: {{ employee?.forename }}</p>
-<p>Nazwisko: {{ employee?.surname }}</p>
-<p>Telefon: {{ employee?.phone }}</p>
-<p>Email: {{ employee?.email }}</p>
-<p>Adres: {{ employee?.houseNumber }} {{ employee?.street }}, {{ employee?.zipcode }} {{ employee?.city }}</p>
+<table class="employeeInfoTable">
+  <tr>
+    <th>Imię</th>
+    <td>{{ employee?.forename }}</td>
+  </tr>
+  <tr>
+    <th>Nazwisko</th>
+    <td>{{ employee?.surname }}</td>
+  </tr>
+  <tr>
+    <th>Telefon</th>
+    <td>{{ employee?.phone }}</td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{ employee?.email }}</td>
+  </tr>
+  <tr>
+    <th>Adres</th>
+    <td>{{ employee?.houseNumber }} {{ employee?.street }}, {{ employee?.zipcode }} {{ employee?.city }}</td>
+  </tr>
+</table>
 <div>
   <h3>Wizyty</h3>
-  <p *ngFor="let v of employee?.visits "><a routerLink="/visit/{{ v.idVisit }}">{{ v.date }}</a></p>
+  <table class="visitsTable">
+    <tr>
+      <th>Data wizyty</th>
+    </tr>
+    <tr *ngFor="let v of employee?.visits">
+      <td><a routerLink="/visit/{{ v.idVisit }}">{{ v.date }}</a></td>
+    </tr>
+  </table>
 </div>
 <div>
   <h3>Zabiegi</h3>
-  <p *ngFor="let s of employee?.surgeries"><a routerLink="/animalSurgery/{{s.idAnimalSurgery}}">{{s.date}}</a></p>
+  <table class="surgeryListTable">
+    <tr>
+      <th>Data zabiegu</th>
+    </tr>
+    <tr *ngFor="let s of employee?.surgeries">
+      <td><a routerLink="/animalSurgery/{{ s.idAnimalSurgery }}">{{ s.date }}</a></td>
+    </tr>
+  </table>
 </div>
+

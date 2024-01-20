@@ -1,16 +1,34 @@
 <div>
-  <label for="password">Nowe hasło</label>
-  <input type="password" id="password" [formControl]="password">
-  <button (click)="changePassword()">Zmień</button>
+  <form class="changePasswordForm">
+    <label for="password">Nowe hasło</label>
+    <input type="password" id="password" [formControl]="password">
+    <button (click)="changePassword()">Zmień</button>
+  </form>
 </div>
 <div>
-  <p>Imię: {{ client?.forename }}</p>
-  <p>Nazwisko: {{ client?.surname }}</p>
-  <p>Email: {{ client?.email }}</p>
+  <table class="clientInfoTable">
+    <tr>
+      <th>Imię</th>
+      <td>{{ client?.forename }}</td>
+    </tr>
+    <tr>
+      <th>Nazwisko</th>
+      <td>{{ client?.surname }}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{ client?.email }}</td>
+    </tr>
+  </table>
 </div>
+
 <div>
-  Wizyty:
-  <p *ngFor="let v of visits$ | async">
-    <a routerLink="/visit/{{ v.idVisit }}">{{ v.date }} {{ v.animal.name }}</a>
-  </p>
+  <table class="visitsTable">
+    <tr>
+      <th>Wizyty:</th>
+    </tr>
+    <tr *ngFor="let v of visits$ | async">
+      <td><a routerLink="/visit/{{ v.idVisit }}">{{ v.date }} {{ v.animal.name }}</a></td>
+    </tr>
+  </table>
 </div>

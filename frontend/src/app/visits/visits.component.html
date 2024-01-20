@@ -5,12 +5,33 @@
   </div>
   <div *ngIf="!isArchive && currentVisit">
     <h1>Obecna/Najbliższa wizyta</h1>
-    <p><a routerLink="/visit/{{ currentVisit.idVisit }}">Zwierzę {{ currentVisit.animal.name }} Termin: {{ currentVisit.date }}</a></p>
+    <table class="visits-table">
+      <tr>
+        <th>Zwierzę</th>
+        <th>Termin</th>
+        <th>Link</th>
+      </tr>
+      <tr>
+        <td>{{ currentVisit.animal.name }}</td>
+        <td>{{ currentVisit.date }}</td>
+        <td><a routerLink="/visit/{{ currentVisit.idVisit }}">Szczegóły</a></td>
+      </tr>
+    </table>
   </div>
   <div *ngIf="visits && visits.length > 0">
-    <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} wizyty:</h1>
-    <div *ngFor="let visit of visits">
-      <p><a routerLink="/visit/{{ visit.idVisit }}">Zwierzę {{ visit.animal.name }} Termin: {{ visit.date }}</a></p>
-    </div>
+      <h1>{{ isArchive ? 'Archiwalne' : 'Nadchodzące'}} wizyty:</h1>
+    <table class="visits-table">
+      <tr>
+        <th>Zwierzę</th>
+        <th>Termin</th>
+        <th>Szczegóły</th>
+      </tr>
+      <tr *ngFor="let visit of visits">
+        <td>{{ visit.animal.name }}</td>
+        <td>{{ visit.date }}</td>
+        <td><a routerLink="/visit/{{ visit.idVisit }}">Zobacz</a></td>
+      </tr>
+    </table>
+
   </div>
 </div>

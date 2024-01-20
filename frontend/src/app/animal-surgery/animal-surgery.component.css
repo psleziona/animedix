@@ -61,7 +61,7 @@ h3 {
   text-transform: uppercase;
 }
 
-/* Styl ogólny tabeli */
+
 .surgery-table {
   width: 80%;
   border-collapse: collapse;
@@ -71,27 +71,36 @@ h3 {
   margin-right: auto;
 }
 
-/* Styl nagłówków tabeli */
-.surgery-table th {
+.infoTable {
+  width: 20%;
+  border-collapse: collapse;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: auto;
+}
+
+
+.surgery-table th, .infoTable th {
   background-color: #4CAF50;
   color: #f5f5f5;
   padding: 8px;
 }
 
-/* Styl komórek tabeli */
-.surgery-table td {
+
+.surgery-table td, .infoTable td {
   padding: 8px;
   border: 1px solid #ddd;
   background-color: #f5f5f5 ;
 }
 
-/* Styl linków */
-.surgery-table a {
+
+.surgery-table a, .infoTable a{
   color: #2196F3;
   text-decoration: none;
   text-transform: uppercase;
 }
 
-.surgery-table a:hover {
+.surgery-table a:hover, .infoTable a:hover {
   text-decoration: underline;
 }
