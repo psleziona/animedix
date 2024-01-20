@@ -20,13 +20,11 @@ h1,p, h3{
   padding: 8px;
 }
 
-
 .employeeInfoTable td, .visitsTable td, .surgeryListTable td {
   padding: 8px;
   border: 1px solid #ddd;
   background-color: #f5f5f5 ;
 }
-
 
 .employeeInfoTable a, .visitsTable a, .surgeryListTable a{
   color: #2196F3;

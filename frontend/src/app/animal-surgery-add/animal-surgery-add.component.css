@@ -1,4 +1,3 @@
-/* Stylowanie formularza */
 .dateForm {
   display: flex;
   flex-direction: row;
@@ -12,6 +11,7 @@
   width: 30%;
   margin:20px auto auto;
 }
+
 .availableTermForm{
   display: flex;
   flex-direction: row;
@@ -25,37 +25,36 @@
   width: 80%;
   margin:20px auto auto;
 }
-/* Stylowanie pojedynczego bloku etykieta-pole */
+
 .form-field {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-/* Stylowanie etykiet */
 label {
   margin-bottom: 5px;
 
 }
 
-/* Stylowanie pól tekstowych */
 input {
   border: 1px solid #ddd;
   border-radius: 4px;
   flex-grow: 1;
 }
 
-/* Styl dla przycisku */
 button {
   margin-top: 20px;
   align-self: flex-start;
 }
+
 h1,h3{
   margin-top: 20px;
   margin-left:150px;
   color:black;
   font-weight: 500;
 }
+
 .animal-surgery-table {
   width: 30%;
   border-collapse: collapse;
@@ -65,20 +64,17 @@ h1,h3{
   margin-right: auto;
 }
 
-
 .animal-surgery-table th {
   background-color: #4CAF50;
   color: #f5f5f5;
   padding: 8px;
 }
 
-
 .animal-surgery-table td {
   padding: 8px;
   border: 1px solid #ddd;
   background-color: #f5f5f5 ;
 }
-
 
 .animal-surgery-table a {
   color: #2196F3;

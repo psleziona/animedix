@@ -5,7 +5,6 @@ h1{
   font-weight: 500;
 }
 
-
 .employees-table {
   width: 80%;
   border-collapse: collapse;
@@ -15,20 +14,17 @@ h1{
   margin-right: auto;
 }
 
-
 .employees-table th {
   background-color: #4CAF50;
   color: #f5f5f5;
   padding: 8px;
 }
 
-
 .employees-table td {
   padding: 8px;
   border: 1px solid #ddd;
   background-color: #f5f5f5 ;
 }
-
 
 .employees-table a {
   color: #2196F3;

@@ -8,13 +8,16 @@
 
 
 }
+
 a {
   color: #a0b29a;
   text-decoration: none;
 }
+
 a:hover{
   color: #4CAF50;
 }
+
 ul {
   display: flex;
   justify-content: space-between;

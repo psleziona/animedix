@@ -5,7 +5,6 @@ h1{
   font-weight: 500;
 }
 
-/* Styl ogólny tabeli */
 .animal-table {
   width: 80%;
   border-collapse: collapse;
@@ -15,21 +14,19 @@ h1{
   margin-right: auto;
 }
 
-/* Styl nagłówków tabeli */
 .animal-table th {
   background-color: #4CAF50;
   color: #f5f5f5;
   padding: 8px;
 }
 
-/* Styl komórek tabeli */
+
 .animal-table td {
   padding: 8px;
   border: 1px solid #ddd;
   background-color: #f5f5f5 ;
 }
 
-/* Styl linków */
 .animal-table a {
   color: #2196F3;
   text-decoration: none;
