@@ -42,7 +42,7 @@ public class ShiftController {
 
     @PostMapping("/shifts/generate")
     ResponseEntity<Void> generateShifts(@RequestBody Map<String, String> shiftInfos) {
-        shiftService.generateShifts(shiftInfos);
+        shiftService.generateEmployeeShifts(shiftInfos);
         return ResponseEntity.ok().build();
     }
 

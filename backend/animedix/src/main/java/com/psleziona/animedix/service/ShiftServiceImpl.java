@@ -57,36 +57,45 @@ public class ShiftServiceImpl implements ShiftService{
     }
 
     @Override
-    public void generateShifts(Map<String, String> shiftInfo) {
+    public void generateEmployeeShifts(Map<String, String> shiftInfo) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
         LocalDate date = LocalDate.parse(shiftInfo.get("month") + "-01", formatter);
-        YearMonth yearMonth = YearMonth.of(date.getYear(), date.getMonth());
-        int numberOfDays = yearMonth.lengthOfMonth();
-        for(int i = 1; i <= numberOfDays;i++) {
-            LocalDateTime shiftStart = LocalDateTime.of(date.getYear(), date.getMonth(), i, 8,0,0);
-            LocalDateTime shiftEnd = LocalDateTime.of(date.getYear(), date.getMonth(), i, 16,0,0);
-            Shift s = new Shift();
-            s.setShiftStart(shiftStart);
-            s.setShiftEnd(shiftEnd);
-            shiftRepository.save(s);
-        }
+
+        shiftRepository.findAll().stream().filter(shift -> shift.getShiftStart().getMonth().equals(date.getMonth()))
+                        .findFirst().or(() -> {
+                                        generateShiftsForMonth(date);
+                                        return Optional.of(new Shift());
+                });
+
+        //pobierz aktualne godziny pracownika na dany miesiąć, sprawdz ile trzeba dodać i na tej podstawie dodaj
+
+
+        /*
+        *   {
+        *       idEmployee: ilość godzin
+        *   }
+        * */
+
         shiftInfo.entrySet().stream()
                 .filter(e -> !e.getKey().equals("month"))
                 .forEach(e -> {
-                    Integer idE = Integer.parseInt(e.getKey());
-                    Integer hoursNo = Integer.parseInt(e.getValue());
-                    Employee employee = employeeRepository.findById(idE).get();
-                    Long dayNo = Math.round(hoursNo / 8.0);
+                    Integer idEmployee = Integer.parseInt(e.getKey());
+                    int hoursNo = Integer.parseInt(e.getValue());
+                    Employee employee = employeeRepository.findById(idEmployee).get();
+                    long employeeWorkingHours = employee.getShifts().stream().filter(shift -> shift.getShiftStart().getMonth().equals(date.getMonth()))
+                            .count();
+                    long dayNo = Math.round(hoursNo / 8.0);
+                    int numberOfDays = getMonthDaysCount(date);
 
-                    Set<Integer> monthDays = new HashSet<>();
+                    Set<Integer> workingDaysInMonth = new HashSet<>();
                     Random random = new Random();
 
-                    while (monthDays.size() <= dayNo) {
+                    while (workingDaysInMonth.size() <= dayNo) {
                         int d = random.nextInt(numberOfDays) + 1;
-                        monthDays.add(d);
+                        workingDaysInMonth.add(d);
                     }
 
-                    for(int day : monthDays) {
+                    for(int day : workingDaysInMonth) {
                         Shift shift = shiftRepository.findAll().stream()
                                 .filter(s -> Objects.equals(s.getShiftStart().toLocalDate(), LocalDate.of(date.getYear(), date.getMonth(), day))).findFirst().get();
                         employee.getShifts().add(shift);
@@ -99,5 +108,23 @@ public class ShiftServiceImpl implements ShiftService{
                     }
                     employeeRepository.save(employee);
                 });
+    }
+
+    @Override
+    public void generateShiftsForMonth(LocalDate date) {
+        int numberOfDays = getMonthDaysCount(date);
+        for(int i = 1; i <= numberOfDays;i++) {
+            LocalDateTime shiftStart = LocalDateTime.of(date.getYear(), date.getMonth(), i, 8,0,0);
+            LocalDateTime shiftEnd = LocalDateTime.of(date.getYear(), date.getMonth(), i, 16,0,0);
+            Shift s = new Shift();
+            s.setShiftStart(shiftStart);
+            s.setShiftEnd(shiftEnd);
+            shiftRepository.save(s);
+        }
+    }
+
+    private int getMonthDaysCount(LocalDate date) {
+        YearMonth yearMonth = YearMonth.of(date.getYear(), date.getMonth());
+        return yearMonth.lengthOfMonth();
     }
 }
