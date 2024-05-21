@@ -38,7 +38,10 @@ export class ShiftGeneratorComponent {
     // @ts-ignore
     for(let e of this.employees) {
       // @ts-ignore
-      s[e.id] = document.querySelector(`#employee${e.id}`).value;
+      if(document.querySelector(`#employee${e.id}`).value != '')
+        { // @ts-ignore
+          s[e.id] = document.querySelector(`#employee${e.id}`).value;
+        }
     }
     this.shiftService.generateShifts(s).subscribe(r => this.router.navigateByUrl("/shifts"));
   }
