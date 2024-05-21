@@ -21,7 +21,7 @@ public class Employee extends User {
     @NonNull
     private String city;
     private JobRole jobRole;
-    @ManyToMany(mappedBy = "employees")
+    @ManyToMany(mappedBy = "employees", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JsonIgnoreProperties({"employees"})
     private List<Shift> shifts;
     @OneToMany(mappedBy = "doctor")
